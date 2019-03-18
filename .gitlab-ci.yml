@@ -36,6 +36,7 @@ build lino-telegram:
     - docker push $LINO_LATEST_IMAGE
   only:
     - /master/
+    - /newPipeline/
   environment: production
 
 build lino-telegram-dev:
@@ -61,6 +62,7 @@ build cronjob:
     - docker push $CRONJOB_LATEST_IMAGE
   only:
     - /master/
+    - /newPipeline/
   environment: production
 
 build lino-facebook:
@@ -74,8 +76,8 @@ build lino-facebook:
     - docker push $LINO_LATEST_IMAGE_FACEBOOK
   only:
     - /master/
+    - /newPipeline/
   environment: production
-
 
 
 ############################################################
