@@ -16,7 +16,7 @@ class ActionCalendar(Action):
         dispatcher.utter_message('Vou buscar isso daí para você')
         crawlerRegister = 'https://webcrawler-matricula.lappis.rocks'
         try:
-            response = requests.get(
+            requests.get(
                 f'{crawlerRegister}/registration/downloadPdf',
                 timeout=3
             )

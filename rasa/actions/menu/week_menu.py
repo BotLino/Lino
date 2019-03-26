@@ -1,5 +1,6 @@
 import datetime
 from rasa_core.actions.action import Action
+import requests
 
 
 class ActionSendWeekMenu(Action):
@@ -13,7 +14,7 @@ class ActionSendWeekMenu(Action):
         img_timestamp = f'?time={timestamp}'
 
         try:
-            response = requests.get(
+            requests.get(
                 f'{crawler_url}{img_path}{img_timestamp}',
                 timeout=3
             )
