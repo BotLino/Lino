@@ -24,7 +24,7 @@ class ActionDailyDinner(Action):
 
         try:
             response = requests.get(
-                'http://webcrawler-ru.lappis.rocks/cardapio/{}'
+                'http://webcrawler-ru.botlino.com.br/cardapio/{}'
                 .format(day),
                 timeout=3
             ).json()

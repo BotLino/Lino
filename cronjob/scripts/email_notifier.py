@@ -34,7 +34,7 @@ def get_facebook_users():
 
 def get_email():
 
-    URL = "https://lino-alerta.lappis.rocks/newAlert"
+    URL = "https://lino-alerta.botlino.com.br/newAlert"
 
     try:
         response = requests.get(URL).json()
