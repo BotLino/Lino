@@ -16,7 +16,7 @@ class ActionDailyMenu(Action):
         # Change the url if you have your own webcrawler server
         try:
             response = requests.get(
-                'http://webcrawler-ru.lappis.rocks/cardapio/{}'
+                'http://webcrawler-ru.botlino.com.br/cardapio/{}'
                 .format(day),
                 timeout=3
             ).json()

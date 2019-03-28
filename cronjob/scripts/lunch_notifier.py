@@ -63,7 +63,7 @@ def get_daily_menu():
         # Change the url if you have your own webcrawler server
         try:
             response = requests.get(
-                'http://webcrawler-ru.lappis.rocks/cardapio/{}/Almoco'
+                'http://webcrawler-ru.botlino.com.br/cardapio/{}/Almoco'
                 .format(day)
             ).json()
         except ValueError:
