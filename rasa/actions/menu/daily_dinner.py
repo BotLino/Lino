@@ -2,7 +2,7 @@ import requests
 import os
 import time
 import logging
-from rasa_core.actions.action import Action
+from rasa_core_sdk import Action
 
 ACCESS_TOKEN = os.getenv('TELEGRAM_ACCESS_TOKEN', '')
 API_URL = 'https://api.telegram.org'

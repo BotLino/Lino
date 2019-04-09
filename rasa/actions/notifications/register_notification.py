@@ -2,7 +2,7 @@ import os
 import requests
 import json
 from pymongo import MongoClient
-from rasa_core.actions.action import Action
+from rasa_core_sdk import Action
 
 # If you want to use your own bot to development add the bot token as
 # second parameters

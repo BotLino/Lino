@@ -1,5 +1,5 @@
 import os
-from rasa_core.actions.action import Action
+from rasa_core_sdk import Action
 import requests
 
 # If you want to use your own bot to development add the bot token as

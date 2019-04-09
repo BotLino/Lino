@@ -1,5 +1,5 @@
-from rasa_core.actions.action import Action
-from rasa_core.events import UserUttered
+from rasa_core_sdk import Action
+from rasa_core_sdk.events import UserUttered
 
 
 class ActionTriggerNotification(Action):
