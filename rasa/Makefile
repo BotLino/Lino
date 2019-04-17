@@ -7,7 +7,7 @@ train-core:
 train: train-nlu train-core
 
 run-telegram:
-	python -m rasa_core.run -d models/dialogue -u models/current/nlu --port 5002 -c telegram --credentials credentials.yml
+	python -m rasa_core.run -d models/dialogue -u models/nlu/current --port 5002 --credentials credentials.yml --endpoints endpoints.yml
 
 run-facebook:
 	python train.py run-facebook

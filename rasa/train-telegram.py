@@ -27,14 +27,14 @@ def run(core_dir, nlu_dir):
                         interpreter=_interpreter,
                         endpoints=_endpoints)
 
-    http_server = _agent.handle_channels(
-        [input_channel], 5002, ""
+    _agent.handle_channels(
+        [input_channel], 5002, serve_forever=True
     )
-
-    try:
-        http_server.serve_forever()
-    except Exception as exc:
-        logger.exception(exc)
+    #
+    # try:
+    #     http_server.serve_forever()
+    # except Exception as exc:
+    #     logger.exception(exc)
 
 if __name__ == '__main__':
     utils.configure_colored_logging(loglevel='DEBUG')

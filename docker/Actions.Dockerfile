@@ -7,7 +7,7 @@ ADD ./docker/actions.requirements.txt /tmp/
 RUN pip install --upgrade pip && \
     pip install -r /tmp/actions.requirements.txt
 
-ADD ./rasa/actions/ /rasa/actions/
+ADD ./rasa/actions/actions.py /rasa/actions/actions.py
 ADD ./rasa/Makefile /rasa/Makefile
 
 WORKDIR rasa/
