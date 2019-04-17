@@ -1,0 +1,2 @@
+rasa-core==0.13.1
+rasa_core_sdk
