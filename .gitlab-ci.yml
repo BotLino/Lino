@@ -148,8 +148,9 @@ test-deploy digital-ocean-deploy:
   only:
     - /test-deploy/
   script:
+    - whoami
     - sudo docker-compose up -d --build
   environment: test-deploy
-  when: manual
+  when: on_success
   tags:
     - deploy-do
