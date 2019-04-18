@@ -151,3 +151,5 @@ test-deploy digital-ocean-deploy:
     - sudo docker-compose up -d --build
   environment: test-deploy
   when: manual
+  tags:
+    - deploy-do
