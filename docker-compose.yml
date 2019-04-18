@@ -18,7 +18,7 @@ services:
             # - PSID: ${PSID
             # - FACEBOOK_ACCESS_TOKEN: ${FACEBOOK_ACCESS_TOKEN}
             # - SECRET: ${SECRET}
-            - WEBHOOK_URL=https://104.248.67.4/webhook
+            - WEBHOOK_URL=https://159.203.92.142/webhook
             - TELEGRAM_DB_URI=mongodb://mongo_lino:27010/lino_telegram
             # - FACEBOOK_DB_URI: ${FACEBOOK_DB_URI}
         # bot credentials in train.py or another train file.
