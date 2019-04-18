@@ -2,6 +2,7 @@ stages:
   - test
   - build
   - deploy
+  - test-deploy
 
 ############################################################
 ######################## Variables #########################
@@ -136,3 +137,17 @@ deploy lino-telegram-homolog:
             --service new-telegram-lino"
   only:
     - /devel/
+
+############################################################
+##################### Test Deploy #########################
+############################################################
+    
+test-deploy digital-ocean-deploy:
+  image: docker
+  stage: test-deploy
+  only:
+    - /test-deploy/
+  script:
+    - sudo docker-compose up -d --build
+  environment: test-deploy
+  when: manual
