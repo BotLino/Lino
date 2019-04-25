@@ -90,6 +90,15 @@ WEBHOOK_URL = os.getenv('WEBHOOK_URL', '')
 
 5. Agora está tudo certinho pra você começar a desenvolver e testar o bot :)
 
+#### Script setup_env.py
+
+Para facilitar a troca de variáveis no ambiente existe um script na pasta scripts/ que vai te ajudar.
+
+Para utilizar basta usar o comando:
+
+```bash
+python3 scripts/setup_env.py
+```
 
 #### Testando o Lino no Terminal
 
