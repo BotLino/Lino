@@ -58,7 +58,7 @@ class ActionSchedule(Action):
         steps.append(step_3)
 
         for step in steps:
-            dispatcher.utter_response(step)
+            dispatcher.utter_attachment(step)
 
         dispatcher.utter_message(';)')
 

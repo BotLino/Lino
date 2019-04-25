@@ -24,7 +24,7 @@ class ActionSendWeekMenu(Action):
                         'Aprecie com moderação :)',
                 'image': f'{crawler_url}{img_path}{img_timestamp}'
             }
-            dispatcher.utter_response(data)
+            dispatcher.utter_attachment(data)
         except Exception as exceptions:
             dispatcher.utter_message(
                 "Não consegui pegar o cardápio da semana... "
