@@ -58,3 +58,26 @@ services:
         depends_on:
             - mongo_telegram
             - mongo_facebook
+
+    elasticsearch:
+        image: docker.elastic.co/elasticsearch/elasticsearch:5.4.3
+        container_name: elasticsearch
+        ports:
+            - "9200:9200"
+            - "9300:9300"
+        networks:
+            - docker_elk
+    kibana:
+        image: docker.elastic.co/kibana/kibana:5.4.3
+        container_name: kibana
+        environment:
+            - "ELASTICSEARCH_URL=http://elasticsearch:9200"
+        ports:
+            - "5601:5601"
+        networks:
+            - docker_elk
+        depends_on:
+            - elasticsearch
+networks:
+  docker_elk:
+    driver: bridge
