@@ -27,7 +27,12 @@ class ActionCalendar(Action):
                         'pré-matrícula, ajuste...',
                 'image': f'{crawlerRegister}/registration/downloadPdf'
             }
-            dispatcher.utter_attachment(data)
+            dispatcher.utter_template("utter_image",
+                                      tracker,
+                                      False,
+                                      text=data.get('text'),
+                                      image=data.get('image')
+                                    )
         except Exception as exception:
             dispatcher.utter_message(
                 "Tive um problema ao pegar o calendário acadêmico pra você... "
