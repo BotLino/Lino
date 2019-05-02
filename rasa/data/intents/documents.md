@@ -131,3 +131,23 @@
 - [declaração de período](documents), cara
 - [declaração de período de curso](documents), cara
 - bot, [declaração de período de curso](documents)
+
+## intent:asks_school_history_proof
+- Como pegar o [histórico escolar](documents)?
+- como pegar o [historico escolar](documents)?
+- [Histórico Escolar](documents)
+- [Histórico escolar](documents)
+- [Historico escolar](documents)
+- [historico Escolar](documents)
+- [histórico Escolar](documents)
+- [histórico escolar](documents)
+- [historico escolar](documents)
+- Eae, como pego que pego o [histórico escolar](documents)?
+- oi Lino, como que faço pra retirar o [histórico escolar](documents)?
+- fala bixo, me manda ae como arranja o [historico escolar](documents)
+- opa mano, me diz sobre o [hist escolar](documents)
+- eaeee, [historcio escolar](documents)
+- [hist escl](documents)
+- [histórico escolar](documents), cara
+- [histórico escolar](documents), cara
+- bot, [histórico escolar](documents)

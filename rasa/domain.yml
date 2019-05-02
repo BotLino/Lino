@@ -176,6 +176,7 @@ actions:
   - actions.documents.register_proof.ActionRegisterProof
   - actions.documents.tutoring_proof.ActionTutoringProof
   - actions.documents.course_period_proof.ActionCoursePeriodProof
+  - actions.documents.school_history_proof.ActionSchoolHistoryProof
   - utter_finish_notification
   - utter_finish_unregister_notification
 
