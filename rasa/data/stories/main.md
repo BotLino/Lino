@@ -43,6 +43,10 @@
 * asks_tutoring_proof{"documents": "Declaração de monitoria", "documents": "declaração de monitoria", "documents": "Declaracao de monitoria", "documents": "Declaração de Monitoria", "documents": "declaração de Monitoria", "documents": "declaraçao de monitoria", "documents": "declaracao de Monitoria"}
   - action_tutoring_proof
 
+## path_asks_course_period_proof
+* asks_course_period_proof{"documents": "Declaração de período de curso", "documents": "declaração de periodo de curso", "documents": "Declaracao de periodo de curso", "documents": "Declaração de Período de Curso", "documents": "declaração de periodo de curso", "documents": "declaraçao de periodo de curso", "documents": "declaração de Período de Curso"}
+  - action_course_period_proof
+
 ## path_asks_schedule
 * asks_about_schedule{"documents": "grade horaria", "documents": "grade horária"}
   - action_schedule

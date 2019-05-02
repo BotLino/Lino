@@ -24,6 +24,7 @@ intents:
   - asks_register_proof
   - asks_regular_proof
   - asks_tutoring_proof
+  - asks_course_period_proof
 
   - asks_about_gmail
 
@@ -174,6 +175,7 @@ actions:
   - actions.documents.schedule.ActionSchedule
   - actions.documents.register_proof.ActionRegisterProof
   - actions.documents.tutoring_proof.ActionTutoringProof
+  - actions.documents.course_period_proof.ActionCoursePeriodProof
   - utter_finish_notification
   - utter_finish_unregister_notification
 

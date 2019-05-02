@@ -6,16 +6,16 @@ DOC_1 = 'login/index.html?response_type=code&'
 DOC_2 = 'client_id=102&redirect_uri=/documentodigital/index.html'
 UNB_URL = f'https://servicos.unb.br/dados/{DOC_1}{DOC_2}'
 GIT_URL = 'https://raw.githubusercontent.com/BotLino/Lino/'
-IMGS_PATH = '3_documentos_academicos/rasa/images/TutoringProof/'
+IMGS_PATH = '3_documentos_academicos/rasa/images/CoursePeriodProof/'
 
 
-class ActionTutoringProof(Action):
+class ActionCoursePeriodProof(Action):
     def name(self):
-        return "action_tutoring_proof"
+        return "action_course_period_proof"
 
     def run(self, dispatcher, tracker, domain):
         messages = []
-        welcome_1 = 'Para conseguir o sua declaração de monitoria '
+        welcome_1 = 'Para conseguir o sua declaração de período de curso '
         welcome_2 = 'você deve acessar este link:'
 
         messages.append('Só um segundo, to buscando aqui...')
@@ -36,7 +36,7 @@ class ActionTutoringProof(Action):
 
         # Step 1
         step_1_1 = 'Faça login no site'
-        step_1_2 = 'selecione Declaração de Monitoria'
+        step_1_2 = 'selecione Declaração Período de Curso'
         step_1 = {
             'text': f'Passo 1: {step_1_1} e {step_1_2}',
             'image': f'{GIT_URL}{IMGS_PATH}step2.png{free_cache_url}'

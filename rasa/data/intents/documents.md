@@ -110,3 +110,24 @@
 - [declaração de monitoira](documents), cara
 - [declaração de monitoria](documents), cara
 - bot, [declaração de monitoria](documents)
+
+## intent:asks_course_period_proof
+- Como pegar o [declaração de período de curso](documents)?
+- como pegar o [declaração de periodo de curso](documents)?
+- [Declaracao de periodo de curso](documents)
+- [declaracao de monitoria](documents)
+- [declaracao de Periodo de Curso](documents)
+- [Declaração de Período de Curso](documents)
+- [Declaracao de Periodo de Curso](documents)
+- [declaração de Período de Curso](documents)
+- [Declaração de periodo de Curso](documents)
+- [Declaração de Período de curso](documents)
+- Eae, como pego que pego o [Declaração de período de curso](documents)?
+- oi Lino, como que faço pra retirar o [declaracao de período de curso](documents)?
+- fala bixo, me manda ae como arranja o [declaração de período de curso](documents)
+- opa mano, me diz sobre o [desclar de period curso](documents)
+- eaeee, [desclaração de período de curso](documents)
+- [declar de per curs](documents)
+- [declaração de período](documents), cara
+- [declaração de período de curso](documents), cara
+- bot, [declaração de período de curso](documents)
