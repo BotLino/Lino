@@ -23,6 +23,7 @@ intents:
   - asks_about_schedule
   - asks_register_proof
   - asks_regular_proof
+  - asks_tutoring_proof
 
   - asks_about_gmail
 
@@ -172,6 +173,7 @@ actions:
   - actions.documents.regular_proof.ActionRegularProof
   - actions.documents.schedule.ActionSchedule
   - actions.documents.register_proof.ActionRegisterProof
+  - actions.documents.tutoring_proof.ActionTutoringProof
   - utter_finish_notification
   - utter_finish_unregister_notification
 
@@ -242,11 +244,7 @@ templates:
           - Cardápio do RU
           - Alertas da comunidade
           - Calendário de Matrícula
-          - Declaração de Monitoria
-          - Declaração de Período de Curso
-          - Histórico Escolar
-        
-
+     
         Aaah, se você quiser saber mais sobre cada um desses tópicos, é só digitar /help.
 
   utter_restart:
@@ -269,6 +267,9 @@ templates:
         - Comprovante de Matrícula
         - Declaração de Aluno Regular
         - Declaração de Grade Horária
+        - Declaração de Monitoria
+        - Declaração de Período de Curso
+        - Histórico Escolar
         
         Qualquer dúvida é só digitar /help.
 

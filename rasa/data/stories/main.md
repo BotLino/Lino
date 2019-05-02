@@ -39,6 +39,10 @@
 * asks_register_proof{"documents": "Comprovante de matrícula", "documents": "comprovante de matrícula", "documents": "Comprovante de matricula", "documents": "Comprovante de Matrícula", "documents": "comprovante de Matrícula", "documents": "Comprovante de Matricula", "documents": "comprovante de Matricula"}
   - action_register_proof
 
+## path_asks_tutoring_proof
+* asks_tutoring_proof{"documents": "Declaração de monitoria", "documents": "declaração de monitoria", "documents": "Declaracao de monitoria", "documents": "Declaração de Monitoria", "documents": "declaração de Monitoria", "documents": "declaraçao de monitoria", "documents": "declaracao de Monitoria"}
+  - action_tutoring_proof
+
 ## path_asks_schedule
 * asks_about_schedule{"documents": "grade horaria", "documents": "grade horária"}
   - action_schedule

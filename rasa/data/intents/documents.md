@@ -89,3 +89,24 @@
 - [comprovante de matricual](documents), cara
 - [comprovante de matricula](documents), cara
 - bot, [comprovante de matricula](documents)
+
+## intent:asks_tutoring_proof
+- Como pegar o [declaração de monitoria](documents)?
+- como pegar o [Declaração de monitoria](documents)?
+- [Declaracao de monitoria](documents)
+- [declaracao de monitoria](documents)
+- [declaracao de Monitoria](documents)
+- [declaração de Monitoria](documents)
+- [Declaração de monitoria](documents)
+- [Declaração de Monitoria](documents)
+- [Declaracao de Monitoria](documents)
+- [declaração de monitoria](documents)
+- Eae, como pego que pego o [declaração de monitoria](documents)?
+- oi Lino, como que faço pra retirar o [declaracao de monitoria](documents)?
+- fala bixo, me manda ae como arranja o [declaração de monitoria](documents)
+- opa mano, me diz sobre o [desclar de monit](documents)
+- eaeee, [desclaração de monitoria](documents)
+- [declar de monit](documents)
+- [declaração de monitoira](documents), cara
+- [declaração de monitoria](documents), cara
+- bot, [declaração de monitoria](documents)
