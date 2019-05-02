@@ -242,6 +242,10 @@ templates:
           - Cardápio do RU
           - Alertas da comunidade
           - Calendário de Matrícula
+          - Declaração de Monitoria
+          - Declaração de Período de Curso
+          - Histórico Escolar
+        
 
         Aaah, se você quiser saber mais sobre cada um desses tópicos, é só digitar /help.
 
