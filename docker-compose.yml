@@ -8,44 +8,27 @@ services:
       context: .
       dockerfile: docker/Telegram.Dockerfile
     ports:
-      - 5005:5005
       - 5002:5002
     volumes:
       - .:/2018.2-Lino
     stdin_open: true
     tty: true
     environment:
-      - TRAINING_EPOCHS=60
-      - TELEGRAM_ACCESS_TOKEN=445036585:AAFYeGa-B8dfjr4REXyosH2avrBkZxqb5pE
-      - VERIFY=TesteFgaBot
-      - WEBHOOK_URL=https://01d0365a.ngrok.io/webhooks/telegram/webhook
-      - TELEGRAM_DB_URI=mongodb://mongo_lino:27010/lino_telegram
-      - FACEBOOK_DB_URI=mongodb://mongo_facebook:27011/lino_facebook
-      # - PSID: ${PSID}
-      # - FACEBOOK_ACCESS_TOKEN: ${FACEBOOK_ACCESS_TOKEN}
-      # - SECRET: ${SECRET}
+      - TRAINING_EPOCHS: ${TRAINING_EPOCHS}
+      - TELEGRAM_ACCESS_TOKEN: ${TELEGRAM_ACCESS_TOKEN}
+      - VERIFY: ${VERIFY}
+      - PSID: ${PSID}
+      - FACEBOOK_ACCESS_TOKEN: ${FACEBOOK_ACCESS_TOKEN}
+      - SECRET: ${SECRET}
+      - WEBHOOK_URL: ${WEBHOOK_URL}
+      - TELEGRAM_DB_URI: ${TELEGRAM_DB_URI}
+      - FACEBOOK_DB_URI: ${FACEBOOK_DB_URI}
     # bot credentials in train.py or another train file.
     depends_on:
-      - cronjob
       - actions
+      - cronjob
       - mongo_telegram
-      # - mongo_facebook
-
-  actions:
-    build:
-      context: .
-      dockerfile: ./docker/Actions.Dockerfile
-    ports:
-      - 5055:5055
-    volumes:
-      - ./bot/actions:/bot/actions
-      - ./bot/Makefile:/bot/Makefile
-    command: "make run-actions"
-    environment:
-      - TELEGRAM_ACCESS_TOKEN=445036585:AAFYeGa-B8dfjr4REXyosH2avrBkZxqb5pE
-      - VERIFY=TesteFgaBot
-      - TELEGRAM_DB_URI=mongodb://mongo_lino:27010/lino_telegram
-      - FACEBOOK_DB_URI=mongodb://mongo_facebook:27011/lino_facebook
+      - mongo_facebook
 
   mongo_telegram:
     image: mongo:latest
@@ -55,13 +38,13 @@ services:
     ports:
       - 27010:27010
 
-  # mongo_facebook:
-  #   image: mongo:latest
-  #   command: mongod --port 27011
-  #   volumes:
-  #       - /l/mongo_facebook/mongo_facebook_db:/data/db
-  #   ports:
-  #       - 27011:27011
+  mongo_facebook:
+    image: mongo:latest
+    command: mongod --port 27011
+    volumes:
+      - /l/mongo_facebook/mongo_facebook_db:/data/db
+    ports:
+      - 27011:27011
 
   cronjob:
     image: guila/cronjob:latest
@@ -70,11 +53,27 @@ services:
     stdin_open: true
     tty: true
     environment:
-      - URI_TELEGRAM=mongodb://mongo_lino:27010/lino_telegram
-      - URI_FACEBOOK=mongodb://mongo_facebook:27011/lino_facebook
-      - TELEGRAM_ACCESS_TOKEN=445036585:AAFYeGa-B8dfjr4REXyosH2avrBkZxqb5pE
-      # - FACEBOOK_ACCESS_TOKEN: ${FACEBOOK_ACCESS_TOKEN}
-      # - PSID: ${PSID}
+      - URI_TELEGRAM: ${URI_TELEGRAM}
+      - URI_FACEBOOK: ${URI_FACEBOOK}
+      - TELEGRAM_ACCESS_TOKEN: ${TELEGRAM_ACCESS_TOKEN}
+      - FACEBOOK_ACCESS_TOKEN: ${FACEBOOK_ACCESS_TOKEN}
+      - PSID: ${PSID}
     depends_on:
       - mongo_telegram
-      # - mongo_facebook
+      - mongo_facebook
+
+  actions:
+    build:
+      context: .
+      dockerfile: ./docker/Actions.Dockerfile
+    ports:
+      - 5055:5055
+    volumes:
+      - ./rasa/actions:/rasa/actions
+      - ./rasa/Makefile:/rasa/Makefile
+    command: "make run-actions"
+    environment:
+      - TELEGRAM_ACCESS_TOKEN: ${TELEGRAM_ACCESS_TOKEN}
+      - VERIFY: ${VERIFY}
+      - TELEGRAM_DB_URI: ${TELEGRAM_DB_URI}
+      - FACEBOOK_DB_URI: ${FACEBOOK_DB_URI}

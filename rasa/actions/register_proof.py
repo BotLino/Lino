@@ -64,8 +64,7 @@ class ActionRegisterProof(Action):
                                       tracker,
                                       False,
                                       text=step.get('text'),
-                                      image=step.get('image')
-                                    )
+                                      image=step.get('image'))
 
         dispatcher.utter_message(';)')
 

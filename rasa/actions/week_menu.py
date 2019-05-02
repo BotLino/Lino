@@ -28,8 +28,7 @@ class ActionSendWeekMenu(Action):
                                       tracker,
                                       False,
                                       text=data.get('text'),
-                                      image=data.get('image')
-                                    )
+                                      image=data.get('image))
         except Exception as exceptions:
             dispatcher.utter_message(
                 "Não consegui pegar o cardápio da semana... "

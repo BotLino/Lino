@@ -16,10 +16,8 @@ class ActionCalendar(Action):
         dispatcher.utter_message('Vou buscar isso daí para você')
         crawlerRegister = 'https://webcrawler-matricula.botlino.com.br'
         try:
-            requests.get(
-                f'{crawlerRegister}/registration/downloadPdf',
-                timeout=3
-            )
+            requests.get(f'{crawlerRegister}/registration/downloadPdf'
+                         , timeout=3)
             data = {
                 'text': 'Aqui está o calendário de matrícula. '
                         'Nele você pode adquirir informações de datas sobre: '
@@ -31,8 +29,7 @@ class ActionCalendar(Action):
                                       tracker,
                                       False,
                                       text=data.get('text'),
-                                      image=data.get('image')
-                                    )
+                                      image=data.get('image'))
         except Exception as exception:
             dispatcher.utter_message(
                 "Tive um problema ao pegar o calendário acadêmico pra você... "
