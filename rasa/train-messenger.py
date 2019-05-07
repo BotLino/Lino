@@ -4,9 +4,9 @@ import os
 import train
 
 from rasa_core import utils
-from rasa_core.interpreter import RasaNLUInterpreter
-from rasa_core.agent import Agent
-from rasa_core.channels import HttpInputChannel
+from rasa_core.utils import configure_colored_logging, AvailableEndpoints
+from rasa_core.run import load_agent
+from rasa_core.interpreter import NaturalLanguageInterpreter
 from rasa_core.channels.facebook import FacebookInput
 
 
@@ -17,29 +17,42 @@ SECRET = os.getenv('SECRET', '')
 FACEBOOK_ACCESS_TOKEN = os.getenv('FACEBOOK_ACCESS_TOKEN', '')
 
 
-def run():
-    # load your trained agent
-    interpreter = RasaNLUInterpreter('models/nlu/default/current')
-
-    agent = Agent.load("models/dialogue", interpreter)
-
+def run(core_dir, nlu_dir):
+    _endpoints = AvailableEndpoints.read_endpoints('endpoints.yml')
+    _interpreter = NaturalLanguageInterpreter.create(nlu_dir)
+    
     input_channel = FacebookInput(
-        fb_verify=VERIFY,  # you need tell facebook this token,
-                           # to confirm your URL
+        fb_verify=VERIFY,
+        # you need tell facebook this token, to confirm your URL
         fb_secret=SECRET,  # your app secret
-        fb_access_token=FACEBOOK_ACCESS_TOKEN  # token for the page
-                                               # you subscribed to
+        fb_access_token=FACEBOOK_ACCESS_TOKEN
+        # token for the page you subscribed to
     )
 
-    agent.handle_channel(HttpInputChannel(5001, "", input_channel))
+    _agent = load_agent(core_dir,
+                       interpreter=_interpreter,
+                       endpoints=_endpoints)
 
+    http_server = _agent.handle_channels(
+        [input_channel], 5001, ""
+    )
+
+    # set serve_forever=True if you want to keep the server running
+    try:
+        http_server.serve_forever()
+    except Exception as exc:
+        logger.exception(exc)
 
 if __name__ == '__main__':
     utils.configure_colored_logging(loglevel='DEBUG')
 
     logger.info("Train NLU")
-    train.train_nlu()
     logger.info("Train Dialogue")
-    train.train_dialogue()
+    train.train_dialogue(
+        'domain.yml',
+        'models/dialogue',
+        'data/stories/',
+        'policy_config.yml'
+    )
     logger.info("Run")
-    run()
+    run('models/dialogue', 'models/nlu/current')
