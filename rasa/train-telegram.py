@@ -2,18 +2,16 @@ import logging
 import os
 import train
 
-from rasa_core import utils
 from rasa_core.channels.telegram import TelegramInput
 from rasa_core.utils import configure_colored_logging, AvailableEndpoints
 from rasa_core.run import load_agent
 from rasa_core.interpreter import NaturalLanguageInterpreter
 
+
 logger = logging.getLogger(__name__)
-configure_colored_logging(loglevel='DEBUG')
 
 
 def run(core_dir, nlu_dir):
-
     _endpoints = AvailableEndpoints.read_endpoints('endpoints.yml')
     _interpreter = NaturalLanguageInterpreter.create(nlu_dir)
 
@@ -30,14 +28,10 @@ def run(core_dir, nlu_dir):
     _agent.handle_channels(
         [input_channel], 5002, serve_forever=True
     )
-    #
-    # try:
-    #     http_server.serve_forever()
-    # except Exception as exc:
-    #     logger.exception(exc)
+
 
 if __name__ == '__main__':
-    utils.configure_colored_logging(loglevel='DEBUG')
+    configure_colored_logging(loglevel='DEBUG')
 
     logger.info("Train NLU")
     logger.info("Train Dialogue")
