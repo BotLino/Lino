@@ -6,8 +6,10 @@ import re
 docker_compose_path = 'docker-compose.yml'
 envs = {}
 
+
 def print_error(msg):
     print('\x1b[1;31m' + msg + '\x1b[0m')
+
 
 def process_env_yaml(text):
     if isinstance(text, dict):
@@ -17,14 +19,15 @@ def process_env_yaml(text):
     text = text.split('=')
     return (text[0], text[1])
 
+
 def load_envs():
     read = read_file(docker_compose_path)
     dump = yaml.load(read)
     services = dump['services']
     for service in services:
-        if not 'environment' in services[service]:
+        if 'environment' not in services[service]:
             continue
-        if not service in envs:
+        if service not in envs:
             envs[service] = {}
         service_envs = services[service]['environment']
         for env in service_envs:
@@ -36,6 +39,7 @@ def read_file(path):
     with open(path, 'r') as f:
         doc = f.read()
     return doc
+
 
 def change_envs():
     for service in envs:
@@ -51,10 +55,11 @@ def change_envs():
                 continue
             envs[service][env] = new
 
+
 def change_ngrok():
     try:
         res = req.get('http://localhost:4040/api/tunnels')
-    except:
+    except Exception:
         print_error('ERROR: Can\'t connect to ngrok')
         exit()
     url = ''
@@ -70,15 +75,17 @@ def change_ngrok():
                 continue
             envs[service][env] = url
 
+
 def unprocess_env(name, value):
     match = re.match(r'\$\{.+\}', value)
     if match:
-        return { name: value }
+        ret = dict()
+        ret[name] = value
+        return ret
     return name + '=' + value
 
+
 def envs_to_list():
-    read = read_file('docker-compose.yml')
-    dump = yaml.load(read)
     for serv in envs:
         new_envs = envs[serv]
         to_yaml = []
@@ -86,6 +93,7 @@ def envs_to_list():
             plain = unprocess_env(env, envs[serv][env])
             to_yaml.append(plain)
         envs[serv] = to_yaml
+
 
 def write_changes():
     read = read_file('docker-compose.yml')
@@ -99,6 +107,7 @@ def write_changes():
     with open('docker-compose.yml', 'w') as dc:
         yaml.dump(dump, dc, default_flow_style=False)
 
+
 def lint():
     read = read_file('docker-compose.yml')
     version_regex = r'(version: \'\d+\') *\n'
@@ -108,6 +117,7 @@ def lint():
         read = ret.group(0) + '\n' + read
     with open('docker-compose.yml', 'w') as f:
         f.write(read)
+
 
 def main():
     load_envs()
@@ -128,6 +138,7 @@ def main():
     if changed:
         write_changes()
         lint()
+
 
 if __name__ == '__main__':
     main()
