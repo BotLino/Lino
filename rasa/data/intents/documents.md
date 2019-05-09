@@ -89,3 +89,65 @@
 - [comprovante de matricual](documents), cara
 - [comprovante de matricula](documents), cara
 - bot, [comprovante de matricula](documents)
+
+## intent:asks_tutoring_proof
+- Como pegar o [declaração de monitoria](documents)?
+- como pegar o [Declaração de monitoria](documents)?
+- [Declaracao de monitoria](documents)
+- [declaracao de monitoria](documents)
+- [declaracao de Monitoria](documents)
+- [declaração de Monitoria](documents)
+- [Declaração de monitoria](documents)
+- [Declaração de Monitoria](documents)
+- [Declaracao de Monitoria](documents)
+- [declaração de monitoria](documents)
+- Eae, como pego que pego o [declaração de monitoria](documents)?
+- oi Lino, como que faço pra retirar o [declaracao de monitoria](documents)?
+- fala bixo, me manda ae como arranja o [declaração de monitoria](documents)
+- opa mano, me diz sobre o [desclar de monit](documents)
+- eaeee, [desclaração de monitoria](documents)
+- [declar de monit](documents)
+- [declaração de monitoira](documents), cara
+- [declaração de monitoria](documents), cara
+- bot, [declaração de monitoria](documents)
+
+## intent:asks_course_period_proof
+- Como pegar o [declaração de período de curso](documents)?
+- como pegar o [declaração de periodo de curso](documents)?
+- [Declaracao de periodo de curso](documents)
+- [declaracao de monitoria](documents)
+- [declaracao de Periodo de Curso](documents)
+- [Declaração de Período de Curso](documents)
+- [Declaracao de Periodo de Curso](documents)
+- [declaração de Período de Curso](documents)
+- [Declaração de periodo de Curso](documents)
+- [Declaração de Período de curso](documents)
+- Eae, como pego que pego o [Declaração de período de curso](documents)?
+- oi Lino, como que faço pra retirar o [declaracao de período de curso](documents)?
+- fala bixo, me manda ae como arranja o [declaração de período de curso](documents)
+- opa mano, me diz sobre o [desclar de period curso](documents)
+- eaeee, [desclaração de período de curso](documents)
+- [declar de per curs](documents)
+- [declaração de período](documents), cara
+- [declaração de período de curso](documents), cara
+- bot, [declaração de período de curso](documents)
+
+## intent:asks_school_history_proof
+- Como pegar o [histórico escolar](documents)?
+- como pegar o [historico escolar](documents)?
+- [Histórico Escolar](documents)
+- [Histórico escolar](documents)
+- [Historico escolar](documents)
+- [historico Escolar](documents)
+- [histórico Escolar](documents)
+- [histórico escolar](documents)
+- [historico escolar](documents)
+- Eae, como pego que pego o [histórico escolar](documents)?
+- oi Lino, como que faço pra retirar o [histórico escolar](documents)?
+- fala bixo, me manda ae como arranja o [historico escolar](documents)
+- opa mano, me diz sobre o [hist escolar](documents)
+- eaeee, [historcio escolar](documents)
+- [hist escl](documents)
+- [histórico escolar](documents), cara
+- [histórico escolar](documents), cara
+- bot, [histórico escolar](documents)

@@ -23,6 +23,8 @@ intents:
   - asks_about_schedule
   - asks_register_proof
   - asks_regular_proof
+  - asks_tutoring_proof
+  - asks_course_period_proof
 
   - asks_about_gmail
 
@@ -172,6 +174,9 @@ actions:
   - action_regular_proof
   - action_schedule
   - action_register_proof
+  - action_tutoring_proof
+  - action_course_period_proof
+  - action_school_history_proof
   - utter_finish_notification
   - utter_finish_unregister_notification
 
@@ -259,9 +264,17 @@ templates:
 
   utter_documents:
     - text: |
-        Vish pessoa, agora não rola
 
-        Não me ensinaram ainda, mas logo logo tô manjando!
+        Oi, posso ajudar você a conseguir seguintes documentos:
+
+        - Comprovante de Matrícula
+        - Declaração de Aluno Regular
+        - Declaração de Grade Horária
+        - Declaração de Monitoria
+        - Declaração de Período de Curso
+        - Histórico Escolar
+
+        Qualquer dúvida é só digitar /help.
 
   utter_operation_type:
     - text: |
