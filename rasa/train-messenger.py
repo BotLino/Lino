@@ -3,7 +3,6 @@ import logging
 import os
 import train
 
-from rasa_core import utils
 from rasa_core.utils import configure_colored_logging, AvailableEndpoints
 from rasa_core.run import load_agent
 from rasa_core.interpreter import NaturalLanguageInterpreter
@@ -20,7 +19,7 @@ FACEBOOK_ACCESS_TOKEN = os.getenv('FACEBOOK_ACCESS_TOKEN', '')
 def run(core_dir, nlu_dir):
     _endpoints = AvailableEndpoints.read_endpoints('endpoints.yml')
     _interpreter = NaturalLanguageInterpreter.create(nlu_dir)
-    
+
     input_channel = FacebookInput(
         fb_verify=VERIFY,
         # you need tell facebook this token, to confirm your URL
@@ -30,21 +29,16 @@ def run(core_dir, nlu_dir):
     )
 
     _agent = load_agent(core_dir,
-                       interpreter=_interpreter,
-                       endpoints=_endpoints)
+                        interpreter=_interpreter,
+                        endpoints=_endpoints)
 
-    http_server = _agent.handle_channels(
-        [input_channel], 5001, ""
+    _agent.handle_channels(
+        [input_channel], 5001, serve_forever=True
     )
 
-    # set serve_forever=True if you want to keep the server running
-    try:
-        http_server.serve_forever()
-    except Exception as exc:
-        logger.exception(exc)
 
 if __name__ == '__main__':
-    utils.configure_colored_logging(loglevel='DEBUG')
+    configure_colored_logging(loglevel='DEBUG')
 
     logger.info("Train NLU")
     logger.info("Train Dialogue")

@@ -19,6 +19,7 @@ def train_dialogue(domain_file,
                                               'validation_split': 0.2}
                                       )
 
+
 if __name__ == "__main__":
     train_dialogue('domain.yml', 'models/dialogue', 'data/stories/',
                    'policy_config.yml')
