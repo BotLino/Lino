@@ -1,83 +1,103 @@
 version: '3'
 
 services:
-    lino:
-        # If you want to development and use another image,
-        # change the image to the Dockerfile that corresponds to the one you want to use.
-        image: guila/lino:latest
-        ports:
-            - 5002:5002
-        volumes:
-            - .:/2018.2-Lino
-        stdin_open: true
-        tty: true
-        environment:
-            - TRAINING_EPOCHS: ${TRAINING_EPOCHS}
-            - TELEGRAM_ACCESS_TOKEN: ${TELEGRAM_ACCESS_TOKEN}
-            - VERIFY: ${VERIFY}
-            - PSID: ${PSID}
-            - FACEBOOK_ACCESS_TOKEN: ${FACEBOOK_ACCESS_TOKEN}
-            - SECRET: ${SECRET}
-            - WEBHOOK_URL: ${WEBHOOK_URL}
-            - TELEGRAM_DB_URI: ${TELEGRAM_DB_URI}
-            - FACEBOOK_DB_URI: ${FACEBOOK_DB_URI}
-        # bot credentials in train.py or another train file.
-        depends_on:
-            - cronjob
-            - mongo_telegram
-            - mongo_facebook
+  lino:
+    # If you want to development and use another image,
+    # change the image to the Dockerfile that corresponds to the one you want to use.
+    build:
+      context: .
+      dockerfile: docker/Telegram.Dockerfile
+    ports:
+      - 5002:5002
+    volumes:
+      - .:/2018.2-Lino
+    stdin_open: true
+    tty: true
+    environment:
+      - TRAINING_EPOCHS: ${TRAINING_EPOCHS}
+      - TELEGRAM_ACCESS_TOKEN: ${TELEGRAM_ACCESS_TOKEN}
+      - VERIFY: ${VERIFY}
+      - PSID: ${PSID}
+      - FACEBOOK_ACCESS_TOKEN: ${FACEBOOK_ACCESS_TOKEN}
+      - SECRET: ${SECRET}
+      - WEBHOOK_URL: ${WEBHOOK_URL}
+      - TELEGRAM_DB_URI: ${TELEGRAM_DB_URI}
+      - FACEBOOK_DB_URI: ${FACEBOOK_DB_URI}
+    # bot credentials in train.py or another train file.
+    depends_on:
+      - actions
+      - cronjob
+      - mongo_telegram
+      - mongo_facebook
 
-    mongo_telegram:
-        image: mongo:latest
-        command: mongod --port 27010
-        volumes:
-            - /l/mongo_telegram/mongo_telegram_db:/data/db
-        ports:
-            - 27010:27010
+  mongo_telegram:
+    image: mongo:latest
+    command: mongod --port 27010
+    volumes:
+      - /l/mongo_telegram/mongo_telegram_db:/data/db
+    ports:
+      - 27010:27010
 
-    mongo_facebook:
-        image: mongo:latest
-        command: mongod --port 27011
-        volumes:
-            - /l/mongo_facebook/mongo_facebook_db:/data/db
-        ports:
-            - 27011:27011
+  mongo_facebook:
+    image: mongo:latest
+    command: mongod --port 27011
+    volumes:
+      - /l/mongo_facebook/mongo_facebook_db:/data/db
+    ports:
+      - 27011:27011
 
-    cronjob:
-        image: guila/cronjob:latest
-        volumes:
-            - ./outputs:/home
-        stdin_open: true
-        tty: true
-        environment:
-            - URI_TELEGRAM: ${URI_TELEGRAM}
-            - URI_FACEBOOK: ${URI_FACEBOOK}
-            - TELEGRAM_ACCESS_TOKEN: ${TELEGRAM_ACCESS_TOKEN}
-            - FACEBOOK_ACCESS_TOKEN: ${FACEBOOK_ACCESS_TOKEN}
-            - PSID: ${PSID}
-        depends_on:
-            - mongo_telegram
-            - mongo_facebook
+  cronjob:
+    image: guila/cronjob:latest
+    volumes:
+      - ./outputs:/home
+    stdin_open: true
+    tty: true
+    environment:
+      - URI_TELEGRAM: ${URI_TELEGRAM}
+      - URI_FACEBOOK: ${URI_FACEBOOK}
+      - TELEGRAM_ACCESS_TOKEN: ${TELEGRAM_ACCESS_TOKEN}
+      - FACEBOOK_ACCESS_TOKEN: ${FACEBOOK_ACCESS_TOKEN}
+      - PSID: ${PSID}
+    depends_on:
+      - mongo_telegram
+      - mongo_facebook
 
-    elasticsearch:
-        image: docker.elastic.co/elasticsearch/elasticsearch:5.4.3
-        container_name: elasticsearch
-        ports:
-            - "9200:9200"
-            - "9300:9300"
-        networks:
-            - docker_elk
-    kibana:
-        image: docker.elastic.co/kibana/kibana:5.4.3
-        container_name: kibana
-        environment:
-            - "ELASTICSEARCH_URL=http://elasticsearch:9200"
-        ports:
-            - "5601:5601"
-        networks:
-            - docker_elk
-        depends_on:
-            - elasticsearch
+  actions:
+    build:
+      context: .
+      dockerfile: ./docker/Actions.Dockerfile
+    ports:
+      - 5055:5055
+    volumes:
+      - ./rasa/actions:/rasa/actions
+      - ./rasa/Makefile:/rasa/Makefile
+    command: "make run-actions"
+    environment:
+      - TELEGRAM_ACCESS_TOKEN: ${TELEGRAM_ACCESS_TOKEN}
+      - VERIFY: ${VERIFY}
+      - TELEGRAM_DB_URI: ${TELEGRAM_DB_URI}
+      - FACEBOOK_DB_URI: ${FACEBOOK_DB_URI}
+
+
+  elasticsearch:
+      image: docker.elastic.co/elasticsearch/elasticsearch:5.4.3
+      container_name: elasticsearch
+      ports:
+          - "9200:9200"
+          - "9300:9300"
+      networks:
+          - docker_elk
+  kibana:
+      image: docker.elastic.co/kibana/kibana:5.4.3
+      container_name: kibana
+      environment:
+          - "ELASTICSEARCH_URL=http://elasticsearch:9200"
+      ports:
+          - "5601:5601"
+      networks:
+          - docker_elk
+      depends_on:
+          - elasticsearch
 networks:
-  docker_elk:
-    driver: bridge
+docker_elk:
+  driver: bridge

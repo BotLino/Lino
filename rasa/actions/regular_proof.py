@@ -1,4 +1,4 @@
-from rasa_core.actions.action import Action
+from rasa_core_sdk import Action
 import time
 import datetime
 
@@ -60,7 +60,11 @@ class ActionRegularProof(Action):
         steps.append(step_3)
 
         for step in steps:
-            dispatcher.utter_response(step)
+            dispatcher.utter_template("utter_image",
+                                      tracker,
+                                      False,
+                                      text=step.get('text'),
+                                      image=step.get('image'))
 
         dispatcher.utter_message(';)')
 

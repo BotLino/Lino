@@ -2,16 +2,16 @@ import requests
 import os
 import time
 import logging
-from rasa_core.actions.action import Action
+from rasa_core_sdk import Action
 
 ACCESS_TOKEN = os.getenv('TELEGRAM_ACCESS_TOKEN', '')
 API_URL = 'https://api.telegram.org'
 PARSE = 'Markdown'
 
 
-class ActionDailyBreakfast(Action):
+class ActionDailyDinner(Action):
     def name(self):
-        return "action_daily_breakfast"
+        return "action_daily_dinner"
 
     def run(self, dispatcher, tracker, domain):
         messages = []
@@ -39,15 +39,15 @@ class ActionDailyBreakfast(Action):
 
             lunch_menu = ""
 
-            for label in response['DESJEJUM']:
+            for label in response['JANTAR']:
                 dish = str(
-                    '*' + label + '*' + ' ' +
-                    response['DESJEJUM'][label] + '\n')
+                    '*' + label + '*' + ' ' + response['JANTAR'][label] + '\n'
+                    )
                 lunch_menu += dish
 
             messages.append(lunch_menu)
 
-            welcome_message = 'Eai! Então... Pro café, nós teremos: '
+            welcome_message = 'Eai! Então... Pro jantar, nós teremos: '
 
             data = requests.get(
                 'https://api.telegram.org/bot{}/sendMessage?chat_id={}&text={}'
