@@ -1,4 +1,4 @@
-from rasa_core.actions.action import Action
+from rasa_core_sdk import Action
 import time
 import datetime
 
@@ -6,17 +6,17 @@ DOC_1 = 'login/index.html?response_type=code&'
 DOC_2 = 'client_id=102&redirect_uri=/documentodigital/index.html'
 UNB_URL = f'https://servicos.unb.br/dados/{DOC_1}{DOC_2}'
 GIT_URL = 'https://raw.githubusercontent.com/fga-eps-mds/2018.2-Lino/'
-IMGS_PATH = 'master/rasa/images/RegularProof/'
+IMGS_PATH = 'master/rasa/images/schedule/'
 
 
-class ActionRegularProof(Action):
+class ActionSchedule(Action):
     def name(self):
-        return "action_regular_proof"
+        return "action_schedule"
 
     def run(self, dispatcher, tracker, domain):
         messages = []
 
-        welcome_1 = 'Para conseguir um comprovante de aluno regular '
+        welcome_1 = 'Para pegar sua grade horária '
         welcome_2 = 'você deve acessar este link:'
 
         messages.append('Só um segundo, to buscando aqui...')
@@ -36,10 +36,8 @@ class ActionRegularProof(Action):
         steps = []
 
         # Step 1
-        step_1_1 = 'Faça login no site'
-        step_1_2 = 'selecione Declaração de aluno regular'
         step_1 = {
-            'text': f'Passo 1: {step_1_1} e {step_1_2}',
+            'text': 'Passo 1: Faça login no site e selecione grade horária',
             'image': f'{GIT_URL}{IMGS_PATH}step2.png{free_cache_url}'
             }
         steps.append(step_1)
@@ -60,7 +58,11 @@ class ActionRegularProof(Action):
         steps.append(step_3)
 
         for step in steps:
-            dispatcher.utter_response(step)
+            dispatcher.utter_template("utter_image",
+                                      tracker,
+                                      False,
+                                      text=step.get('text'),
+                                      image=step.get('image'))
 
         dispatcher.utter_message(';)')
 

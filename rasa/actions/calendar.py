@@ -1,5 +1,5 @@
 import os
-from rasa_core.actions.action import Action
+from rasa_core_sdk import Action
 import requests
 
 # If you want to use your own bot to development add the bot token as
@@ -16,10 +16,8 @@ class ActionCalendar(Action):
         dispatcher.utter_message('Vou buscar isso daí para você')
         crawlerRegister = 'https://webcrawler-matricula.botlino.com.br'
         try:
-            requests.get(
-                f'{crawlerRegister}/registration/downloadPdf',
-                timeout=3
-            )
+            requests.get(f'{crawlerRegister}/registration/downloadPdf',
+                         timeout=3)
             data = {
                 'text': 'Aqui está o calendário de matrícula. '
                         'Nele você pode adquirir informações de datas sobre: '
@@ -27,7 +25,11 @@ class ActionCalendar(Action):
                         'pré-matrícula, ajuste...',
                 'image': f'{crawlerRegister}/registration/downloadPdf'
             }
-            dispatcher.utter_response(data)
+            dispatcher.utter_template("utter_image",
+                                      tracker,
+                                      False,
+                                      text=data.get('text'),
+                                      image=data.get('image'))
         except Exception as exception:
             dispatcher.utter_message(
                 "Tive um problema ao pegar o calendário acadêmico pra você... "

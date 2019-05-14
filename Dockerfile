@@ -1,9 +1,8 @@
 FROM python:3.6
 
-RUN pip install rasa_core==0.10.4
+RUN pip install rasa_core==0.13.1
 
-RUN pip install rasa_nlu[spacy] && \
-    python -m spacy download pt
+RUN pip install rasa_nlu==0.14.0
 
 RUN pip install rasa_nlu[tensorflow]
 

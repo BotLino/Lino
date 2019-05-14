@@ -5,18 +5,17 @@ import datetime
 DOC_1 = 'login/index.html?response_type=code&'
 DOC_2 = 'client_id=102&redirect_uri=/documentodigital/index.html'
 UNB_URL = f'https://servicos.unb.br/dados/{DOC_1}{DOC_2}'
-GIT_URL = 'https://raw.githubusercontent.com/fga-eps-mds/2018.2-Lino/'
-# IMGS_PATH = 'Issue_203-RegisterProof/rasa/images/RegisterProof/'
-IMGS_PATH = 'master/rasa/images/RegisterProof/'
+GIT_URL = 'https://raw.githubusercontent.com/BotLino/Lino/'
+IMGS_PATH = '3_documentos_academicos/rasa/images/CoursePeriodProof/'
 
 
-class ActionRegisterProof(Action):
+class ActionCoursePeriodProof(Action):
     def name(self):
-        return "action_register_proof"
+        return "action_course_period_proof"
 
     def run(self, dispatcher, tracker, domain):
         messages = []
-        welcome_1 = 'Para conseguir um comprovante de matrícula '
+        welcome_1 = 'Para conseguir o sua declaração de período de curso '
         welcome_2 = 'você deve acessar este link:'
 
         messages.append('Só um segundo, to buscando aqui...')
@@ -37,7 +36,7 @@ class ActionRegisterProof(Action):
 
         # Step 1
         step_1_1 = 'Faça login no site'
-        step_1_2 = 'selecione comprovante de matrícula'
+        step_1_2 = 'selecione Declaração Período de Curso'
         step_1 = {
             'text': f'Passo 1: {step_1_1} e {step_1_2}',
             'image': f'{GIT_URL}{IMGS_PATH}step2.png{free_cache_url}'

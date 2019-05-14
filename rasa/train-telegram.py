@@ -2,42 +2,44 @@ import logging
 import os
 import train
 
-from rasa_core import utils
-from rasa_core.interpreter import RasaNLUInterpreter
-from rasa_core.agent import Agent
-from rasa_core.channels import HttpInputChannel
 from rasa_core.channels.telegram import TelegramInput
+from rasa_core.utils import configure_colored_logging, AvailableEndpoints
+from rasa_core.run import load_agent
+from rasa_core.interpreter import NaturalLanguageInterpreter
 
 
 logger = logging.getLogger(__name__)
 
-# If you want to use your own bot to development add the bot credentials as
-# second parameters
-TELEGRAM_ACCESS_TOKEN = os.getenv('TELEGRAM_ACCESS_TOKEN', '')
-VERIFY = os.getenv('VERIFY', '')
-WEBHOOK_URL = os.getenv('WEBHOOK_URL', '')
 
-
-def run():
-    interpreter = RasaNLUInterpreter('models/nlu/default/current')
-
-    agent = Agent.load('models/dialogue', interpreter=interpreter)
+def run(core_dir, nlu_dir):
+    _endpoints = AvailableEndpoints.read_endpoints('endpoints.yml')
+    _interpreter = NaturalLanguageInterpreter.create(nlu_dir)
 
     input_channel = TelegramInput(
-        access_token=TELEGRAM_ACCESS_TOKEN,
-        verify=VERIFY,
-        webhook_url=WEBHOOK_URL
+        access_token=os.getenv('TELEGRAM_ACCESS_TOKEN', ''),
+        verify=os.getenv('VERIFY', ''),
+        webhook_url=os.getenv('WEBHOOK_URL', '')
     )
 
-    agent.handle_channel(HttpInputChannel(5002, "", input_channel))
+    _agent = load_agent(core_dir,
+                        interpreter=_interpreter,
+                        endpoints=_endpoints)
+
+    _agent.handle_channels(
+        [input_channel], 5002, serve_forever=True
+    )
 
 
 if __name__ == '__main__':
-    utils.configure_colored_logging(loglevel='DEBUG')
+    configure_colored_logging(loglevel='DEBUG')
 
     logger.info("Train NLU")
-    train.train_nlu()
     logger.info("Train Dialogue")
-    train.train_dialogue()
+    train.train_dialogue(
+        'domain.yml',
+        'models/dialogue',
+        'data/stories/',
+        'policy_config.yml'
+    )
     logger.info("Run")
-    run()
+    run('models/dialogue', 'models/nlu/current')

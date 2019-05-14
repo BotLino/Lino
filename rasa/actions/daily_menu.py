@@ -1,6 +1,6 @@
 import requests
 import time
-from rasa_core.actions.action import Action
+from rasa_core_sdk import Action
 import logging
 
 
