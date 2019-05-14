@@ -104,6 +104,16 @@ Para começar a desenvolver precisamos fazer algumas alterações no código par
 
 8. Agora está tudo certinho pra você começar a desenvolver e testar o seu bot :)
 
+
+#### Script setup_env.py
+Para facilitar a troca de variáveis no ambiente existe um script na pasta scripts/ que vai te ajudar.
+
+Para utilizar basta usar o comando:
+
+```bash
+python3 scripts/setup_env.py
+```
+
 #### Setup para testar o Lino no terminal
 
 Para testar as alterações feitas no Lino, execute os seguintes comandos no terminal:
