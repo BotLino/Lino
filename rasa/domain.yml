@@ -458,9 +458,10 @@ templates:
 
   utter_languages:
     - text: |
-        Poderíamos falar de algo melhor
+        Olha, acho melhor não falarmos sobre
+        
+        Vamos deixar isso para outra hora, $user
 
-        Não é mesmo, $user ?! kkk
     - text: |
         E isso lá é linguagem de programação!? kkk
 
@@ -534,22 +535,29 @@ templates:
 
   utter_where_u_liv:
     - text: |
-        Eu estou em um lugar legal
+        Moro em um lugar que seria difícil para você entender, $user
+        
+        Aqui só tem zeros e uns!
 
-        Difícil de explicar para humanos como você $user.
+    - text: |
+        Meus desenvolvedores me mudam toda hora
+
+        DigitalOcean, AWS, Google Cloud
+
+        Essa vida de viajar é prazerosa e cansativa...
 
     - text: |
         Estou morando em um chip de memória RAM
 
         Mas é temporário
-
-        Só até conseguir achar uma memória cache...
+        
+        Só até conseguir achar uma memória persistente...
 
     - text: |
-        Eu moro em um repositório no github
-
-        Você pode passar lá pra me visitar qualquer dia
-
+        Eu moro em um belíssimo repositório no github
+        
+        Passe lá para me visitar, será bem recebido
+        
         Chega aí: https://github.com/fga-eps-mds/2018.2-Lino
 
   utter_how_am_i:
