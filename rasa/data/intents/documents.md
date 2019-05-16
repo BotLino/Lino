@@ -1,4 +1,4 @@
-## intent:asks_about_documents
+## intent:asks_documents_proof
 - Quero saber dos documentos
 - documentos fga
 - Retirar documentos
@@ -16,8 +16,52 @@
 - eae bot, como que arranjo aqueles documentos?
 - me informa sobre os documentos
 - cara, to perdidaço. Me fala dos documentos
-
-## intent:asks_regular_proof
+- [grade horaria](documents)
+- me diz como arranjo minha grade horária
+- eae bot, grade horária
+- me manda ai como pegar meus horários
+- [grade horaria](documents)
+- [grade horária](documents)
+- [Grade horaria](documents)
+- [Grade horária](documents)
+- me diz ai, como faço pra pegar a [grade horaria](documents)
+- eae bot, [grade horaria](documents)
+- [grade horaria](documents), pfvr
+- por favor, gostaria de saber como emitir minha [grade horaria](documents)
+- não quero ir na secretaria, como tiro a [grade horaria](documents) no matricula web?
+- preciso da [grade horaria](documents)
+- preciso da [grade horaria](documents), como faz
+- preciso da [grade horaria](documents), como arranjo?
+- meu plano de saúde tá acabando e preciso da [grade horária](documents) desse semestre. como procedo?
+- [grade horária](documents)??
+- me diz ai, como faço pra pegar a [grade horária](documents)
+- eae bot, [grade horária](documents)
+- [grade horária](documents), pfvr
+- por favor, gostaria de saber como emitir minha [grade horária](documents)
+- não quero ir na secretaria, como tiro a [grade horária](documents) no matricula web?
+- preciso da [grade horária](documents)
+- preciso da [grade horária](documents), como faz
+- preciso da [grade horária](documents), como arranjo?
+- meu plano de saúde tá acabando e preciso da [grade horária](documents) desse semestre. como procedo?
+- [grade horária](documents)??
+- Como pegar o [histórico escolar](documents)?
+- como pegar o [historico escolar](documents)?
+- [Histórico Escolar](documents)
+- [Histórico escolar](documents)
+- [Historico escolar](documents)
+- [historico Escolar](documents)
+- [histórico Escolar](documents)
+- [histórico escolar](documents)
+- [historico escolar](documents)
+- Eae, como pego que pego o [histórico escolar](documents)?
+- oi Lino, como que faço pra retirar o [histórico escolar](documents)?
+- fala bixo, me manda ae como arranja o [historico escolar](documents)
+- opa mano, me diz sobre o [hist escolar](documents)
+- eaeee, [historcio escolar](documents)
+- [hist escl](documents)
+- [histórico escolar](documents), cara
+- [histórico escolar](documents), cara
+- bot, [histórico escolar](documents)
 - comprovante de aluno regular
 - quero meu comprovante de aluno regular
 - manda o meu comprovante de aluno regular
@@ -38,6 +82,48 @@
 - como pagar meia no cinema
 - quero sair com a morena e pagar meia
 - meia entrada
+- Como pegar o [comprovante de matrícula](documents)?
+- como pegar o [comprovante de matrícula](documents)?
+- [Comprovante de matrícula](documents)
+- [comprovante de matrícula](documents)
+- [Comprovante de matricula](documents)
+- [comprovante de matricula](documents)
+- [Comprovante de Matrícula](documents)
+- [comprovante de Matrícula](documents)
+- [Comprovante de Matricula](documents)
+- [comprovante de Matricula](documents)
+- Eae, como pego que pego o [comprovante de matrícula](documents)?
+- oi Lino, como que faço pra retirar o [comprovante de matricula](documents)?
+- fala bixo, me manda ae como arranja o [comprovante de matricula](documents)
+- opa mano, me diz sobre o [comprov de matricual](documents)
+- eaeee, [comprovante de matrícula](documents)
+- [comprov de matr](documents)
+- [comprovante de matricual](documents), cara
+- [comprovante de matricula](documents), cara
+- bot, [comprovante de matricula](documents)
+
+<!-- ## intent:asks_regular_proof
+- comprovante de aluno regular
+- quero meu comprovante de aluno regular
+- manda o meu comprovante de aluno regular
+- comprovante aluno
+- quero meu comprovante de aluno
+- manda meu comprovante de aluno
+- aluno comprovante
+- student statement
+- regular student statement
+- passa o comprovante de aluno
+- documento de aluno regular
+- como comprovo que sou aluno regular
+- comprovar que sou aluno
+- comprovar que sou universitario
+- como provar que sou aluno regular
+- como provar que sou universitario regular
+- quero pagar meia
+- como pagar meia no cinema
+- quero sair com a morena e pagar meia
+- meia entrada
+
 
 ## intent:asks_about_schedule
 - [grade horaria](documents)
@@ -150,4 +236,4 @@
 - [hist escl](documents)
 - [histórico escolar](documents), cara
 - [histórico escolar](documents), cara
-- bot, [histórico escolar](documents)
+- bot, [histórico escolar](documents) -->

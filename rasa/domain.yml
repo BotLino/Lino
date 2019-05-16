@@ -19,12 +19,12 @@ intents:
   - notification_types
   - asks_about_register_notifications
 
-  - asks_about_documents
-  - asks_about_schedule
-  - asks_register_proof
-  - asks_regular_proof
-  - asks_tutoring_proof
-  - asks_course_period_proof
+  - asks_documents_proof
+#   - asks_about_schedule
+#   - asks_register_proof
+#   - asks_regular_proof
+#   - asks_tutoring_proof
+#   - asks_course_period_proof
 
   - asks_about_gmail
 
@@ -170,13 +170,13 @@ actions:
   - actions.notifications.buttons_notification.ActionButtonsNotificationTypes
   - actions.notifications.trigger_notification.ActionTriggerNotification
   - actions.notifications.trigger_notification.ActionTriggerUnregisterNotification
-  - utter_documents
-  - actions.documents.regular_proof.ActionRegularProof
-  - actions.documents.schedule.ActionSchedule
-  - actions.documents.register_proof.ActionRegisterProof
-  - actions.documents.tutoring_proof.ActionTutoringProof
-  - actions.documents.course_period_proof.ActionCoursePeriodProof
-  - actions.documents.school_history_proof.ActionSchoolHistoryProof
+  - actions.documents.documents_proof.ActionDocumentsProof
+#   - actions.documents.regular_proof.ActionRegularProof
+#   - actions.documents.schedule.ActionSchedule
+#   - actions.documents.register_proof.ActionRegisterProof
+#   - actions.documents.tutoring_proof.ActionTutoringProof
+#   - actions.documents.course_period_proof.ActionCoursePeriodProof
+#   - actions.documents.school_history_proof.ActionSchoolHistoryProof
   - utter_finish_notification
   - utter_finish_unregister_notification
 
@@ -262,19 +262,19 @@ templates:
 
         Se quiser um específico como café da manhã, almoço ou jantar, eu também consigo te ajudar.
 
-  utter_documents:
-    - text: |
+#   utter_documents:
+#     - text: |
 
-        Oi, posso ajudar você a conseguir seguintes documentos:
+#         Oi, posso ajudar você a conseguir seguintes documentos:
         
-        - Comprovante de Matrícula
-        - Declaração de Aluno Regular
-        - Declaração de Grade Horária
-        - Declaração de Monitoria
-        - Declaração de Período de Curso
-        - Histórico Escolar
+#         - Comprovante de Matrícula
+#         - Declaração de Aluno Regular
+#         - Declaração de Grade Horária
+#         - Declaração de Monitoria
+#         - Declaração de Período de Curso
+#         - Histórico Escolar
         
-        Qualquer dúvida é só digitar /help.
+#         Qualquer dúvida é só digitar /help.
 
   utter_operation_type:
     - text: |
