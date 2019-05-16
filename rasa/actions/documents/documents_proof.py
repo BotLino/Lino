@@ -6,7 +6,7 @@ DOC_1 = 'login/index.html?response_type=code&'
 DOC_2 = 'client_id=102&redirect_uri=/documentodigital/index.html'
 UNB_URL = f'https://servicos.unb.br/dados/{DOC_1}{DOC_2}'
 GIT_URL = 'https://raw.githubusercontent.com/BotLino/Lino/'
-IMGS_PATH = '3_documentos_academicos/rasa/images/DocumentsProof/'
+IMGS_PATH = '5_generalizando_fluxo/rasa/images/DocumentsProof/'
 
 
 class ActionDocumentsProof(Action):
@@ -15,7 +15,7 @@ class ActionDocumentsProof(Action):
 
     def run(self, dispatcher, tracker, domain):
         messages = []
-        welcome_1 = 'Para conseguir sua Declaração de matrícula, Declaraçãod e aluno regular, Declaração de matrícula e etc '
+        welcome_1 = 'Para conseguir seus documentos acadêmicos (Comprovante de matrícula, histórico escolar, declaração de aluno regular e etc) '
         welcome_2 = 'você deve acessar este link:'
 
         messages.append('Só um segundo, to buscando aqui...')
