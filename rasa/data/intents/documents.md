@@ -40,14 +40,11 @@
 - meia entrada
 
 ## intent:asks_about_schedule
-- [grade horaria](documents)
 - me diz como arranjo minha grade horária
 - eae bot, grade horária
 - me manda ai como pegar meus horários
 - [grade horaria](documents)
 - [grade horária](documents)
-- [Grade horaria](documents)
-- [Grade horária](documents)
 - me diz ai, como faço pra pegar a [grade horaria](documents)
 - eae bot, [grade horaria](documents)
 - [grade horaria](documents), pfvr
@@ -56,7 +53,6 @@
 - preciso da [grade horaria](documents)
 - preciso da [grade horaria](documents), como faz
 - preciso da [grade horaria](documents), como arranjo?
-- meu plano de saúde tá acabando e preciso da [grade horária](documents) desse semestre. como procedo?
 - [grade horária](documents)??
 - me diz ai, como faço pra pegar a [grade horária](documents)
 - eae bot, [grade horária](documents)
@@ -67,19 +63,11 @@
 - preciso da [grade horária](documents), como faz
 - preciso da [grade horária](documents), como arranjo?
 - meu plano de saúde tá acabando e preciso da [grade horária](documents) desse semestre. como procedo?
-- [grade horária](documents)??
 
 ## intent:asks_register_proof
-- Como pegar o [comprovante de matrícula](documents)?
 - como pegar o [comprovante de matrícula](documents)?
-- [Comprovante de matrícula](documents)
 - [comprovante de matrícula](documents)
-- [Comprovante de matricula](documents)
 - [comprovante de matricula](documents)
-- [Comprovante de Matrícula](documents)
-- [comprovante de Matrícula](documents)
-- [Comprovante de Matricula](documents)
-- [comprovante de Matricula](documents)
 - Eae, como pego que pego o [comprovante de matrícula](documents)?
 - oi Lino, como que faço pra retirar o [comprovante de matricula](documents)?
 - fala bixo, me manda ae como arranja o [comprovante de matricula](documents)
@@ -87,19 +75,11 @@
 - eaeee, [comprovante de matrícula](documents)
 - [comprov de matr](documents)
 - [comprovante de matricual](documents), cara
-- [comprovante de matricula](documents), cara
 - bot, [comprovante de matricula](documents)
 
 ## intent:asks_tutoring_proof
-- Como pegar o [declaração de monitoria](documents)?
-- como pegar o [Declaração de monitoria](documents)?
-- [Declaracao de monitoria](documents)
+- como pegar o [declaração de monitoria](documents)?
 - [declaracao de monitoria](documents)
-- [declaracao de Monitoria](documents)
-- [declaração de Monitoria](documents)
-- [Declaração de monitoria](documents)
-- [Declaração de Monitoria](documents)
-- [Declaracao de Monitoria](documents)
 - [declaração de monitoria](documents)
 - Eae, como pego que pego o [declaração de monitoria](documents)?
 - oi Lino, como que faço pra retirar o [declaracao de monitoria](documents)?
@@ -114,14 +94,9 @@
 ## intent:asks_course_period_proof
 - Como pegar o [declaração de período de curso](documents)?
 - como pegar o [declaração de periodo de curso](documents)?
-- [Declaracao de periodo de curso](documents)
+- [declaracao de periodo de curso](documents)
 - [declaracao de monitoria](documents)
-- [declaracao de Periodo de Curso](documents)
-- [Declaração de Período de Curso](documents)
-- [Declaracao de Periodo de Curso](documents)
-- [declaração de Período de Curso](documents)
-- [Declaração de periodo de Curso](documents)
-- [Declaração de Período de curso](documents)
+- [Declaração de periodo de curso](documents)
 - Eae, como pego que pego o [Declaração de período de curso](documents)?
 - oi Lino, como que faço pra retirar o [declaracao de período de curso](documents)?
 - fala bixo, me manda ae como arranja o [declaração de período de curso](documents)
@@ -135,11 +110,6 @@
 ## intent:asks_school_history_proof
 - Como pegar o [histórico escolar](documents)?
 - como pegar o [historico escolar](documents)?
-- [Histórico Escolar](documents)
-- [Histórico escolar](documents)
-- [Historico escolar](documents)
-- [historico Escolar](documents)
-- [histórico Escolar](documents)
 - [histórico escolar](documents)
 - [historico escolar](documents)
 - Eae, como pego que pego o [histórico escolar](documents)?
@@ -148,6 +118,5 @@
 - opa mano, me diz sobre o [hist escolar](documents)
 - eaeee, [historcio escolar](documents)
 - [hist escl](documents)
-- [histórico escolar](documents), cara
 - [histórico escolar](documents), cara
 - bot, [histórico escolar](documents)
