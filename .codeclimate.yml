@@ -1,0 +1,28 @@
+version: "2"
+
+plugins: 
+  duplication: # for duplication analysis
+    enabled: true
+    config:
+      languages:
+        python:
+          python_version: 3
+  pep8: # for code style analysis
+    enabled: true
+    config:
+      languages:
+        python:
+          python_version: 3
+  bandit: # for security analysis
+    enabled: true
+    config:
+      languages:
+        python:
+          python_version: 3
+  radon: # for complexity analysis
+    enabled: true
+    config:
+      languages:
+        python:
+          python_version: 3
+

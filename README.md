@@ -22,6 +22,8 @@
   </p>
 </p>
 
+<a href="https://codeclimate.com/github/BotLino/Lino/maintainability"><img src="https://api.codeclimate.com/v1/badges/4796786426759c747eb4/maintainability" /></a>
+
 ### Sobre o projeto
 
 <p align="justify"> &emsp;&emsp;
