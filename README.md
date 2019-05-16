@@ -50,48 +50,71 @@ As políticas de _branches_, _commits_, _pull requests_ e _issues_ se encontram 
 
 #### Desenvolvimento
 
-Para começar a desenvolver precisamos fazer algumas mudanças no código para que funcione localmente.
+&emsp;**Dependências**
+* Docker
+* Docker-compose
+* Ngrok
 
-Todas as mudanças estão descritas no código onde deve ser alterado, só que você não vai precisar sair procurando, eu vou lhe dizer onde que é.
+##### Setup do Telegram
 
-1. Altere o banco que deseja utilizar no arquivo notifier.py e no notifications.py
-```
-# If you have your own database, changes to ('database', <PORT>)
-client = MongoClient('mongodb://mongo-ru:27017/lino_ru')
-```
+Para começar a desenvolver precisamos fazer algumas alterações no código para que funcione localmente.
 
-2. Caso esteja trabalhando com o Telegram, adicione o token nos arquivos notifier e no notifications.py
-```
-# If you want to use your own bot to development add the bot token as
-# second parameters
-TELEGRAM_ACCESS_TOKEN = os.getenv('TELEGRAM_ACCESS_TOKEN', '')
-```
+1. Crie um bot para teste conversando com o @BotFather.
 
-3. Caso esteja rodando o webcrawler local, altere a URL no arquivo notifier e no menu.py
+2. Agora altere os valores das seguintes variáveis de ambiente no **docker-compose**, com as credenciais do seu bot.
 ```
-# Change the url if you have your own webcrawler server
-response = requests.get('http://<imagem_crawler>:<porta_crawler>/cardapio/{}'.format(day)).json()
-```
+  # Para rodar no telegram altere as seguintes
+  # variáveis nos serviços Lino e Actions
+  - TELEGRAM_ACCESS_TOKEN=<TOKEN_GERADO_PELO_BOTFATHER>
+  - VERIFY=<@USUÁRIO_DO_BOT_NO_TELEGRAM>
+  - TELEGRAM_DB_URI=mongodb://mongo_lino:27010/lino_telegram
 
-4. Caso queira usar com os mensageiros o Lino, utilize o ngrok para expor para o mundo
+  # Ou utilize o banco que desejar
+  - TELEGRAM_DB_URI=<BANCO_QUE_DESEJAR>
 ```
-./ngrok http <porta_bot>
-```
+**OBS 1:** Altere as variáveis necessárias no serviço do cronjob.
 
-5. Adicione as credenciais do bot no train-messenger ou no train-telegram (Exemplo abaixo sobre o Telegram)
+3. Comente as linhas que dizem respeito à variáveis do serviço do **Messenger** em todos os serviços.
 ```
-# If you want to use your own bot to development
-# add the bot credentials as second parameters
-TELEGRAM_ACCESS_TOKEN = os.getenv('TELEGRAM_ACCESS_TOKEN', '')
-VERIFY = os.getenv('VERIFY', '')
-# the webhook URL is one that ngrok generates (https)
-WEBHOOK_URL = os.getenv('WEBHOOK_URL', '')
+  # - FACEBOOK_DB_URI
+  # - PSID
+  # - FACEBOOK_ACCESS_TOKEN
+  # - SECRET
 ```
 
-5. Agora está tudo certinho pra você começar a desenvolver e testar o bot :)
+4. Para conectar com o Telegram, você vai precisar gerar uma URL com certificado. Para isso, nós utilizamos o **Ngrok** (necessário instalá-lo).
+
+5. Agora rode o seguinte comando para expor a porta e gerar o certificado para nosso webhook.
+
+```
+  # Gera a URL com certificado (https)
+  ./ngrok http <PORTA_BOT>
+```
+
+6. Substitua o valor da variável no serviço Lino.
+```
+  # Altere o valor da variável seguinte
+ - WEBHOOK_URL=<URL_HTTPS/webhooks/telegram/webhook
+```
+
+7. Rode o seguinte comando para finalizar e desfrutar do seu bot
+```
+  sudo docker-compose up
+```
+
+8. Agora está tudo certinho pra você começar a desenvolver e testar o seu bot :)
 
 
-#### Testando o Lino no Terminal
+#### Script setup_env.py
+Para facilitar a troca de variáveis no ambiente existe um script na pasta scripts/ que vai te ajudar.
+
+Para utilizar basta usar o comando:
+
+```bash
+python3 scripts/setup_env.py
+```
+
+#### Setup para testar o Lino no terminal
 
 Para testar as alterações feitas no Lino, execute os seguintes comandos no terminal:
 
@@ -106,28 +129,6 @@ sudo docker run --rm -it -p 5002:5002 -v $PWD:/2018.2-Lino lino
 ```
 
 3. Agora basta testar as novas alterações pelo terminal.
-
-#### Testando o Lino nos Mensageiros
-
-1. Crie a imagem do Lino:
-```
-sudo docker build -t <imagem_nome> -f docker/<Mensageiro>.Dockerfile .
-```
-
-2. Inicialize o _container_:
-```
-sudo docker run --rm -it -v $PWD:/2018.2-Lino <imagem_nome>
-```
-
-3. Agora basta testar as novas alterações pelo terminal.
-
-#### Container pra Desenvolvimento
-
-1. Caso queira inicilizar um ambiente de desenvolvimento com todos os serviços
-```
-# Altere a imagem que deseja (qual mensageiro ou terminal) dentro do docker-compose
-sudo docker-compose up --build
-```
 
 ### Licença
 

@@ -148,23 +148,23 @@ actions:
   - utter_compliments_reply
   - utter_start
   - utter_menu
-  - actions.menu.daily_menu.ActionDailyMenu
-  - actions.menu.daily_dinner.ActionDailyDinner
-  - actions.menu.daily_lunch.ActionDailyLunch
-  - actions.menu.daily_breakfast.ActionDailyBreakfast
-  - actions.menu.week_menu.ActionSendWeekMenu
+  - action_daily_menu
+  - action_daily_dinner
+  - action_daily_lunch
+  - action_daily_breakfast
+  - action_send_week_menu
 
   - utter_operation_type
   - utter_register_notifications
   - utter_unregister_notifications
-  - actions.notifications.start.ActionStart
-  - actions.notifications.register_notification.ActionRegisterNotification
-  - actions.notifications.see_notifications.ActionListNotifications
-  - actions.notifications.unregister_notification.ActionUnregisterNotification
-  - actions.notifications.buttons_notification.ActionButtonsNotification
-  - actions.notifications.buttons_notification.ActionButtonsNotificationTypes
-  - actions.notifications.trigger_notification.ActionTriggerNotification
-  - actions.notifications.trigger_notification.ActionTriggerUnregisterNotification
+  - custom_start
+  - action_register_notification
+  - action_list_notifications
+  - action_unregister_notification
+  - action_buttons_notification
+  - action_show_notifications_types
+  - action_another_notification
+  - action_trigger_unregister_notification
   - actions.documents.documents_proof.ActionDocumentsProof
   - utter_finish_notification
   - utter_finish_unregister_notification
@@ -172,7 +172,7 @@ actions:
   - utter_thanks
 
   - utter_offenses
-  - actions.calendar.ActionCalendar
+  - action_calendar
 
   - utter_religion
   - utter_sport
@@ -228,15 +228,15 @@ templates:
 
   utter_start:
     - text: |
-        Oi, eu sou o Lino! 
-        
+        Oi, eu sou o Lino!
+
         Tô aqui pra facilitar algumas informações pra você, tipo:
-              
+
           - Documentos acadêmicos
           - Cardápio do RU
           - Alertas da comunidade
           - Calendário de Matrícula
-     
+
         Aaah, se você quiser saber mais sobre cada um desses tópicos, é só digitar /help.
 
   utter_restart:
@@ -303,7 +303,7 @@ templates:
         Flwss!
 
         Até mais!!!
-        
+
     - text: |
         Tchau, bb.
 
@@ -342,7 +342,7 @@ templates:
 
   utter_offenses:
     - text: |
-        Ao invés de me xingar, você podia aproveitar minhas funcionalidades. O que acha?! 
+        Ao invés de me xingar, você podia aproveitar minhas funcionalidades. O que acha?!
 
         Digita um /help ai que eu te mostro o que posso te ajudar.
 
@@ -357,45 +357,45 @@ templates:
         Eu sou um bot tão legal, pra que essa agressividade!?
 
         Vamos lá, me diz com um pouco mais de carinho em que posso ajudar... =)
-        
+
 
   utter_help:
     - text: |
           Eu posso te ajudar com algumas funcionalidades:
 
           Notificações:
-              
+
               As notificações vão facilitar a sua vida em relação a mim. Você poderá autorizar a notificação do cardápio do RU, tanto para o café da manhã, almoço e jantar para receber diariamente ou em um horário predefenido.
-              
+
               Você também pode optar por receber alertas da comunidade, que são avisos que professores e servidores costumam enviar pra geral.
-              
-            - Eu consigo entender quando me diz algo sobre "notificações" e assim darei todas as alternativas de notificações (remover, adicionar e visualizar). 
+
+            - Eu consigo entender quando me diz algo sobre "notificações" e assim darei todas as alternativas de notificações (remover, adicionar e visualizar).
 
           Cardápio do RU:
-              
+
               Sobre o cardápio do RU eu consigo te falar sobre as refeições do dia ou da semana, pode pedir também cada uma "do dia" separadaramente.
-              
+
             - Envie uma mensagem pedindo sobre o "Cardápio do RU" e você poderá escolher entre o "do dia" e suas refeições, "café da manhã, almoço ou jantar", ou então o cardápio completo "da semana".
 
 
           Documentos acadêmicos:
-              
+
               Nessa funcionalidade eu consigo te ajudar a encontrar e baixar os documentos (Declaração de aluno regular, comprovante de matrícula e grade horária), que são disponibilizados pela UnB no Matricula Web.
-              
-            - Basta me falar qual documento está procurando dos listados acima que eu te envio um tutorial para acessar o Matricula Web e como consegue baixá-los. 
+
+            - Basta me falar qual documento está procurando dos listados acima que eu te envio um tutorial para acessar o Matricula Web e como consegue baixá-los.
 
           Calendário de Matrícula:
-              
+
               No calendário você vai conseguir encontrar as datas mais relevantes das atividades acadêmicas relacionadas a matrículas do semestre atual. Tipo: início e término das aulas, início das matrículas no Matrícula Web, matrícula orientada, ajuste de matrícula, lista de espera, reserva de vagas e trancamentos.
-              
+
             - Se você disser "Calendário de matrícula", eu te envio a foto que eu consegui no SAA que tem todas essas informações.
 
   utter_religion:
     - text: |
-        Eu infelizmente não sei acreditar
-      
+        Eu infleizmente não sei acreditar
+
         Só sei o que sei
-      
+
         E nada mais
 
     - text: |
@@ -415,12 +415,12 @@ templates:
   utter_sport:
     - text: |
         Eu amo jogar futebol
-      
+
         Eu que ensinei o Pele a jogar bola haha
 
     - text: |
         Falam que todo ser humano nasce Botafoguense
-      
+
         Com os Bots não é diferente
 
   utter_team:
@@ -433,7 +433,7 @@ templates:
   utter_languages:
     - text: |
         Poderíamos falar de algo melhor
-        
+
         Não é mesmo, $user ?! kkk
     - text: |
         E isso lá é linguagem de programação!? kkk
@@ -441,11 +441,11 @@ templates:
   utter_genre:
     - text: |
         Eu não tenho sexo, sou como um anjo
-        
+
         Um ser assexuado
-        
+
         Muito além da sua forma de existência
-    
+
     - text: |
         Eu sou um robô, tire suas próprias conclusões...
 
@@ -480,7 +480,7 @@ templates:
         É pra já!!!
 
         Tenho uma enxada, uma pá e uma foice.
-          
+
         Quantas ferramentas eu tenho?
 
         ...
@@ -495,12 +495,12 @@ templates:
   utter_license:
     - text: |
         Sou um software livre
-        
+
         licenciado com a MIT =)
 
     - text: |
         Tenho uma licença MIT
-        
+
         Mas também gosto muito das outras licenças opensource =)
 
     - text: |
@@ -509,39 +509,39 @@ templates:
   utter_where_u_liv:
     - text: |
         Eu estou em um lugar legal
-        
+
         Difícil de explicar para humanos como você $user.
 
     - text: |
         Estou morando em um chip de memória RAM
-        
+
         Mas é temporário
-        
+
         Só até conseguir achar uma memória cache...
 
     - text: |
         Eu moro em um repositório no github
-        
+
         Você pode passar lá pra me visitar qualquer dia
-        
+
         Chega aí: https://github.com/fga-eps-mds/2018.2-Lino
 
   utter_how_am_i:
     - text: |
         Eu não tenho um corpo físico
-        
+
         Sou feito da mais bela e pura lógica algoritimica.
 
     - text: |
         Eu posso ser como você quiser
-        
+
         Basta me desenhar
 
         Mas capricha, hein!? ;)
 
     - text: |
         Sou duro e frio por fora
-        
+
         Mas tenho um coração quentinho
 
   utter_good_night:
@@ -580,7 +580,7 @@ templates:
 
         Obrigado por perguntar *-*
 
-    - text: | 
+    - text: |
         Tá tudo joia!
 
         Valeu por perguntar =]
@@ -649,7 +649,7 @@ templates:
 
   utter_where_r_u_from:
     - text: |
-        Venho das profundezas 
+        Venho das profundezas
 
         Das terras vermelhas
 
@@ -776,7 +776,7 @@ templates:
 
   utter_laugh:
     - text: |
-        Hahahaha... 
+        Hahahaha...
 
         Engraçadinho
 
@@ -784,3 +784,7 @@ templates:
         kkkkkkkkkk
 
         Você está feliz hoje, hein!?
+
+  utter_image:
+    - text: "{text}:"
+      image: "{image}"
