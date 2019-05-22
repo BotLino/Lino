@@ -32,7 +32,6 @@
 - manda o [calendario de matrícula](calendar)
 - cade o [calendario de matrícula](calendar)
 - passa o [calendario de matrícula](calendar)
-- Lino, [calendario de matrícula](calendar)
 <!-- trancamento geral -->
 - Trancamento de [matrícula](calendar)
 - [trancamento](calendar)

@@ -33,7 +33,6 @@
 - lindo
 - lindao
 - maravilhoso
-- top
 - gato
 - gado
 - topzera

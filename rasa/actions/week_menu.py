@@ -1,5 +1,5 @@
 import datetime
-from rasa_core.actions.action import Action
+from rasa_core_sdk import Action
 import requests
 
 
@@ -24,7 +24,11 @@ class ActionSendWeekMenu(Action):
                         'Aprecie com moderação :)',
                 'image': f'{crawler_url}{img_path}{img_timestamp}'
             }
-            dispatcher.utter_response(data)
+            dispatcher.utter_template("utter_image",
+                                      tracker,
+                                      False,
+                                      text=data.get('text'),
+                                      image=data.get('image'))
         except Exception as exceptions:
             dispatcher.utter_message(
                 "Não consegui pegar o cardápio da semana... "
