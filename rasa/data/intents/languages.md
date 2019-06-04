@@ -1,0 +1,13 @@
+## intent:languages_course
+- UnB idiomas
+- quero saber sobre o UnB idiomas 
+- curso de inglês
+- curso de línguas
+- idiomas
+- nova língua
+- aprender línguas novas
+- aprender línguas na unb
+- aprender um idioma na unb
+- aprender inglês
+- aprender coreano
+- aprender francês
