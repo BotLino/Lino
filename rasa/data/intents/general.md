@@ -22,7 +22,6 @@
 - [/help](command)
 
 ## intent:greet
-- [Oi](oi)
 - [oi](oi)
 - [oi](oi) amigo
 - [Olá](oi)

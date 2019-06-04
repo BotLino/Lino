@@ -55,7 +55,6 @@
 - Me cadastra pra receber alerta da comunidade
 - Quero receber sobre alerta da comunidade
 - notificações alerta da comunidade
-- alerta da comunidade
 - alerta da comunidade pretty please
 - quero me cadastrar pra lista de notificações do alerta da comunidade
 - me inscreve pra receber o alerta da comunidade por favor
@@ -97,13 +96,13 @@
 - [não](option) quero receber mais [notificação](notification)
 - [nao](option) quero receber mais [notificaçao](notification)
 - [não](option) quero receber mais [notificações](notification)
-- [não](option) quero receber mais [notificações](notification)
+- [não](option) quero receber mais [notificaçoes](notification)
 - [não](option) quero [notificação](notification)
 - [não](option) quero [notificações](notification)
 - [sem](option) [notificação](notification)
 - [sem](option) [notificaçao](notification)
 - [sem](option) [notificações](notification)
-- [sem](option) [notificações](notification)
+- [sem](option) [notificaçoes](notification)
 - [quero tirar](option) as [notificações](notification)
 - [quero tirar](option) as [notificaçoes](notification)
 - [quero tirar](option) a [notificação](notification)

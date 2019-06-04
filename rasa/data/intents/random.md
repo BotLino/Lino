@@ -237,7 +237,6 @@
 ## intent:sons
 - Você tem [filhos](sons)?
 - [filhos](sons)?
-- Você tem [filhos](sons)?
 - [filho](sons)
 - [filha](sons)
 - [filhas](sons)?

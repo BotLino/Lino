@@ -22,8 +22,6 @@
 - me manda ai como pegar meus horários
 - [grade horaria](documents)
 - [grade horária](documents)
-- [Grade horaria](documents)
-- [Grade horária](documents)
 - me diz ai, como faço pra pegar a [grade horaria](documents)
 - eae bot, [grade horaria](documents)
 - [grade horaria](documents), pfvr
@@ -32,7 +30,6 @@
 - preciso da [grade horaria](documents)
 - preciso da [grade horaria](documents), como faz
 - preciso da [grade horaria](documents), como arranjo?
-- meu plano de saúde tá acabando e preciso da [grade horária](documents) desse semestre. como procedo?
 - [grade horária](documents)??
 - me diz ai, como faço pra pegar a [grade horária](documents)
 - eae bot, [grade horária](documents)
@@ -84,14 +81,8 @@
 - meia entrada
 - Como pegar o [comprovante de matrícula](documents)?
 - como pegar o [comprovante de matrícula](documents)?
-- [Comprovante de matrícula](documents)
 - [comprovante de matrícula](documents)
-- [Comprovante de matricula](documents)
 - [comprovante de matricula](documents)
-- [Comprovante de Matrícula](documents)
-- [comprovante de Matrícula](documents)
-- [Comprovante de Matricula](documents)
-- [comprovante de Matricula](documents)
 - Eae, como pego que pego o [comprovante de matrícula](documents)?
 - oi Lino, como que faço pra retirar o [comprovante de matricula](documents)?
 - fala bixo, me manda ae como arranja o [comprovante de matricula](documents)
@@ -99,5 +90,4 @@
 - eaeee, [comprovante de matrícula](documents)
 - [comprov de matr](documents)
 - [comprovante de matricual](documents), cara
-- [comprovante de matricula](documents), cara
 - bot, [comprovante de matricula](documents)

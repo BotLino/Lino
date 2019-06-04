@@ -40,8 +40,7 @@
 - então, o que tem pra comer [hoje](period)?
 
 ## intent: asks_weekly_menu
-- Me fala o cardápio de [semana](period)
-- Me fala o cardápio de [semana](period)
+- Me fala o cardápio da [semana](period)
 - O que tem pra comer [semana](period)
 - Qual é o cardápio de [semana](period)
 - Me passa o cardápio de [semana](period)
@@ -89,7 +88,6 @@
 ## intent: asks_lunch_menu
 <!-- almoço -->
 - Me fala o cardápio do [almoço](meal)
-- Me fala o cardápio do [almoço](meal)
 - O que tem pra comer no [almoço](meal)
 - Qual é o cardápio do [almoço](meal)
 - Me passa o cardápio do [almoço](meal)
@@ -113,7 +111,6 @@
 ## intent: asks_breakfast_menu
 <!-- café da manhã -->
 - Me fala o cardápio do [café da manhã](meal)
-- Me fala o cardápio do [café da manhã](meal)
 - O que tem pra comer no [café da manhã](meal)
 - Qual é o cardápio do [café da manhã](meal)
 - Me passa o cardápio do [café da manhã](meal)
@@ -133,7 +130,6 @@
 - o que vai ser servido no [café da manhã](meal)?
 - então, o que tem pra comer no [café da manhã](meal)?
 <!-- café -->
-- Me fala o cardápio do [café](meal)
 - Me fala o cardápio do [café](meal)
 - O que tem pra comer no [café](meal)
 - Qual é o cardápio do [café](meal)
@@ -155,7 +151,6 @@
 - então, o que tem pra comer no [café](meal)?
 <!-- cafe da manha -->
 - Me fala o cardápio do [cafe da manha](meal)
-- Me fala o cardápio do [cafe da manha](meal)
 - O que tem pra comer no [cafe da manha](meal)
 - Qual é o cardápio do [cafe da manha](meal)
 - Me passa o cardápio do [cafe da manha](meal)
@@ -176,7 +171,6 @@
 - então, o que tem pra comer no [cafe da manha](meal)?
 <!-- cafe -->
 - Me fala o cardápio do [cafe](meal)
-- Me fala o cardápio do [cafe](meal)
 - O que tem pra comer no [cafe](meal)
 - Qual é o cardápio do [cafe](meal)
 - Me passa o cardápio do [cafe](meal)
@@ -196,7 +190,6 @@
 - o que vai ser servido no [cafe](meal)?
 - então, o que tem pra comer no [cafe](meal)?
 <!-- desjejum -->
-- Me fala o cardápio do [desjejum](meal)
 - Me fala o cardápio do [desjejum](meal)
 - O que tem pra comer no [desjejum](meal)
 - Qual é o cardápio do [desjejum](meal)
