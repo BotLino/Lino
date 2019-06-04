@@ -19,6 +19,10 @@
   - utter_goodbye
   - utter_restart
 
+## path_languages_course
+* languages_course
+  - utter_languages_course
+
 ## path_compliments
 * compliments
   - utter_compliments_reply

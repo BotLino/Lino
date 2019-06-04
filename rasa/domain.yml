@@ -11,6 +11,8 @@ intents:
   - asks_dinner_menu
   - asks_lunch_menu
   - asks_breakfast_menu
+  - languages
+  - languages_course
 
   - notifications
   - action_ask_notification
@@ -19,6 +21,13 @@ intents:
   - notification_types
   - asks_about_register_notifications
 
+  - asks_about_documents
+  - asks_about_schedule
+  - asks_register_proof
+  - asks_regular_proof
+  - asks_tutoring_proof
+  - asks_course_period_proof
+  - asks_school_history_proof
   - asks_documents_proof
 
   - asks_about_gmail
@@ -148,6 +157,7 @@ actions:
   - utter_compliments_reply
   - utter_start
   - utter_menu
+  - utter_languages_course
   - action_daily_menu
   - action_daily_dinner
   - action_daily_lunch
@@ -287,6 +297,22 @@ templates:
         E eu tenho as incríveis habilidades de falar sobre documentos acadêmicos, cardápio do RU, alertas da comunidade e calendário de matrícula
 
         Se está procurando por alguma dessas opções é só me falar qual que eu posso te ajudar, bb.
+    
+  utter_languages_course:
+    - text: |
+        E aê mano! Tá interessado em aprender um novo idioma né?
+
+        Posso te ajudar com algumas informações sobre o UnB idiomas basta me dizer qual sua dúvida, parça.
+
+        - Valores dos cursos
+        - Duração dos módulos e semestre letivo
+        - Campus que possuem o curso 
+        - Testes de nivelamento
+        - Concessão de créditos
+        - Sistema de bolsas para estudantes que recebem auxílio estudantil
+        - Limite de faltas para cada curso
+        - Mudança de turmas durante o semestre letivo
+        - Cancelamento e reembolso do valor pago
 
   utter_goodbye:
     - text: |
@@ -788,3 +814,4 @@ templates:
   utter_image:
     - text: "{text}:"
       image: "{image}"
+
