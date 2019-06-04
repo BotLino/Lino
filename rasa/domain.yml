@@ -153,7 +153,7 @@ actions:
   - action_daily_lunch
   - action_daily_breakfast
   - action_send_week_menu
-
+  - action_documents_proof
   - utter_operation_type
   - utter_register_notifications
   - utter_unregister_notifications

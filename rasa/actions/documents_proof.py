@@ -1,4 +1,4 @@
-from rasa_core.actions.action import Action
+from rasa_core_sdk import Action
 import time
 import datetime
 
@@ -15,7 +15,9 @@ class ActionDocumentsProof(Action):
 
     def run(self, dispatcher, tracker, domain):
         messages = []
-        welcome_1 = 'Para conseguir seus documentos acadêmicos (Comprovante de matrícula, histórico escolar, declaração de aluno regular e etc) '
+        welcome_1 = ("Para conseguir seus documentos acadêmicos, "
+                     "comprovante de matrícula, histórico escolar, "
+                     "declaração de aluno regular e etc")
         welcome_2 = 'você deve acessar este link:'
 
         messages.append('Só um segundo, to buscando aqui...')
@@ -59,7 +61,11 @@ class ActionDocumentsProof(Action):
         steps.append(step_3)
 
         for step in steps:
-            dispatcher.utter_response(step)
+            dispatcher.utter_template("utter_image",
+                                      tracker,
+                                      False,
+                                      text=step.get('text'),
+                                      image=step.get('image'))
 
         dispatcher.utter_message(';)')
 
