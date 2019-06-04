@@ -28,7 +28,18 @@
   - utter_duration
 * asks_campus
   - utter_campus
-
+* asks_level_test
+  - utter_level_test
+* asks_credit_granting
+  - utter_credit_granting
+* asks_course_scholarship
+  - utter_course_scholarship
+* asks_course_absence
+  - utter_course_absence
+* asks_change_class
+  - utter_change_class
+* asks_cancellation_refund
+  - utter_cancellation_refund
 
 ## path_compliments
 * compliments
