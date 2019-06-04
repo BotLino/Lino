@@ -31,33 +31,9 @@
 * out_of_scope
   - utter_default
 
-## path_asks_documents
-* asks_about_documents
-  - utter_documents
-
-## path_asks_regular_proof
-* asks_regular_proof
-  - action_regular_proof
-
-## path_asks_register_proof
-* asks_register_proof{"documents": "Comprovante de matrícula", "documents": "comprovante de matrícula", "documents": "Comprovante de matricula", "documents": "Comprovante de Matrícula", "documents": "comprovante de Matrícula", "documents": "Comprovante de Matricula", "documents": "comprovante de Matricula"}
-  - action_register_proof
-
-## path_asks_tutoring_proof
-* asks_tutoring_proof{"documents": "Declaração de monitoria", "documents": "declaração de monitoria", "documents": "Declaracao de monitoria", "documents": "Declaração de Monitoria", "documents": "declaração de Monitoria", "documents": "declaraçao de monitoria", "documents": "declaracao de Monitoria"}
-  - action_tutoring_proof
-
-## path_asks_course_period_proof
-* asks_course_period_proof{"documents": "Declaração de período de curso", "documents": "declaração de periodo de curso", "documents": "Declaracao de periodo de curso", "documents": "Declaração de Período de Curso", "documents": "declaração de periodo de curso", "documents": "declaraçao de periodo de curso", "documents": "declaração de período de curso"}
-  - action_course_period_proof
-
-## path_asks_school_history_proof
-* asks_school_history_proof{"documents": "Histórico escolar", "documents": "histórico escolar", "documents": "Histórico Escolar", "documents": "Historico Escolar", "documents": "historico escolar", "documents": "Historico escolar", "documents": "historico Escolar"}
-  - action_school_history_proof
-
-## path_asks_schedule
-* asks_about_schedule{"documents": "grade horaria", "documents": "grade horária"}
-  - action_schedule
+## path_asks_documents_proof
+* asks_documents_proof{"documents": "Documentos Acadêmicos", "documents": "documentos acadêmicos", "documents": "Documentos academicos", "documents": "documentos academicos", "documents": "documentos Academicos", "documents": "Documentos Academicos", "documents": "documentos Acadêmicos"}
+  - action_documents_proof
 
 ## path_daily_meal
 * asks_menu

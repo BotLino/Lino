@@ -1,4 +1,4 @@
-from rasa_core.actions.action import Action
+from rasa_core_sdk import Action
 import time
 import datetime
 
@@ -6,16 +6,18 @@ DOC_1 = 'login/index.html?response_type=code&'
 DOC_2 = 'client_id=102&redirect_uri=/documentodigital/index.html'
 UNB_URL = f'https://servicos.unb.br/dados/{DOC_1}{DOC_2}'
 GIT_URL = 'https://raw.githubusercontent.com/BotLino/Lino/'
-IMGS_PATH = '3_documentos_academicos/rasa/images/CoursePeriodProof/'
+IMGS_PATH = '5_generalizando_fluxo/rasa/images/DocumentsProof/'
 
 
-class ActionCoursePeriodProof(Action):
+class ActionDocumentsProof(Action):
     def name(self):
-        return "action_course_period_proof"
+        return "action_documents_proof"
 
     def run(self, dispatcher, tracker, domain):
         messages = []
-        welcome_1 = 'Para conseguir o sua declaração de período de curso '
+        welcome_1 = ("Para conseguir seus documentos acadêmicos, "
+                     "comprovante de matrícula, histórico escolar, "
+                     "declaração de aluno regular e etc")
         welcome_2 = 'você deve acessar este link:'
 
         messages.append('Só um segundo, to buscando aqui...')
@@ -36,7 +38,7 @@ class ActionCoursePeriodProof(Action):
 
         # Step 1
         step_1_1 = 'Faça login no site'
-        step_1_2 = 'selecione Declaração Período de Curso'
+        step_1_2 = 'selecione o documento desejado'
         step_1 = {
             'text': f'Passo 1: {step_1_1} e {step_1_2}',
             'image': f'{GIT_URL}{IMGS_PATH}step2.png{free_cache_url}'
@@ -59,7 +61,11 @@ class ActionCoursePeriodProof(Action):
         steps.append(step_3)
 
         for step in steps:
-            dispatcher.utter_response(step)
+            dispatcher.utter_template("utter_image",
+                                      tracker,
+                                      False,
+                                      text=step.get('text'),
+                                      image=step.get('image'))
 
         dispatcher.utter_message(';)')
 
