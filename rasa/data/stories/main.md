@@ -22,6 +22,13 @@
 ## path_languages_course
 * languages_course
   - utter_languages_course
+* asks_course_price
+  - utter_course_price
+* asks_duration
+  - utter_duration
+* asks_campus
+  - utter_campus
+
 
 ## path_compliments
 * compliments

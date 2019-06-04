@@ -22,6 +22,9 @@ intents:
   - asks_about_register_notifications
 
   - asks_documents_proof
+  - asks_course_price
+  - asks_duration
+  - asks_campus
 
   - asks_about_gmail
 
@@ -151,6 +154,9 @@ actions:
   - utter_start
   - utter_menu
   - utter_languages_course
+  - utter_course_price
+  - utter_duration
+  - utter_campus
   - action_daily_menu
   - action_daily_dinner
   - action_daily_lunch
@@ -306,6 +312,18 @@ templates:
         - Limite de faltas para cada curso
         - Mudança de turmas durante o semestre letivo
         - Cancelamento e reembolso do valor pago
+
+  utter_course_price:
+    - text: |
+        O cursos custam $1000000000
+
+  utter_duration:
+    - text: |
+        Dura muito tempo bro
+
+  utter_campus:
+    - text: |
+        Todos os campus da Universidade de Brasília possuem UnB Idiomas.
 
   utter_goodbye:
     - text: |
