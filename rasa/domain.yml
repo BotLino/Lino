@@ -19,12 +19,7 @@ intents:
   - notification_types
   - asks_about_register_notifications
 
-  - asks_about_documents
-  - asks_about_schedule
-  - asks_register_proof
-  - asks_regular_proof
-  - asks_tutoring_proof
-  - asks_course_period_proof
+  - asks_documents_proof
 
   - asks_about_gmail
 
@@ -158,7 +153,7 @@ actions:
   - action_daily_lunch
   - action_daily_breakfast
   - action_send_week_menu
-
+  - action_documents_proof
   - utter_operation_type
   - utter_register_notifications
   - utter_unregister_notifications
@@ -170,13 +165,7 @@ actions:
   - action_show_notifications_types
   - action_another_notification
   - action_trigger_unregister_notification
-  - utter_documents
-  - action_regular_proof
-  - action_schedule
-  - action_register_proof
-  - action_tutoring_proof
-  - action_course_period_proof
-  - action_school_history_proof
+  - actions.documents.documents_proof.ActionDocumentsProof
   - utter_finish_notification
   - utter_finish_unregister_notification
 
@@ -261,21 +250,6 @@ templates:
         Você quer o cardápio de hoje ou da semana?
 
         Se quiser um específico como café da manhã, almoço ou jantar, eu também consigo te ajudar.
-
-  utter_documents:
-    - text: |
-
-        Oi, posso ajudar você a conseguir seguintes documentos:
-
-        - Comprovante de Matrícula
-        - Declaração de Aluno Regular
-        - Declaração de Grade Horária
-        - Declaração de Monitoria
-        - Declaração de Período de Curso
-        - Histórico Escolar
-
-        Qualquer dúvida é só digitar /help.
-
   utter_operation_type:
     - text: |
         Top man, vamos mexer nessas notificações aqui!
