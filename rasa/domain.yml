@@ -32,6 +32,12 @@ intents:
   - asks_course_price
   - asks_duration
   - asks_campus
+  - asks_level_test
+  - asks_credit_granting
+  - asks_course_scholarship
+  - asks_course_absence
+  - asks_change_class
+  - asks_cancellation_refund
 
   - asks_about_gmail
 
@@ -164,6 +170,12 @@ actions:
   - utter_course_price
   - utter_duration
   - utter_campus
+  - utter_level_test
+  - utter_credit_granting
+  - utter_course_scholarship
+  - utter_course_absence
+  - utter_change_class
+  - utter_cancellation_refund
   - action_daily_menu
   - action_daily_dinner
   - action_daily_lunch
@@ -331,6 +343,30 @@ templates:
   utter_campus:
     - text: |
         Todos os campus da Universidade de Brasília possuem UnB Idiomas.
+
+  utter_level_test:
+    - text: |
+        O teste de nivelamento é 
+
+  utter_course_scholarship:
+    - text: |
+        Para conseguir a bolsa de estudo do UnB Idiomas você precisa ser receber auxílio da universidade
+  
+  utter_course_absence:
+    - text: |
+        O limite de faltas que você pode ter é 50
+
+  utter_change_class:
+    - text: |
+        Para mudar de classe precisa disso
+
+  utter_credit_granting:
+    - text: |
+        Para mudar de classe precisa disso
+
+  utter_cancellation_refund:
+    - text: |
+        Para conseguir reembolso olha só
 
   utter_goodbye:
     - text: |
