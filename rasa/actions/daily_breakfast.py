@@ -2,6 +2,7 @@ import requests
 import os
 import time
 import logging
+from concurrent.futures import TimeoutError
 from rasa_core_sdk import Action
 
 ACCESS_TOKEN = os.getenv('TELEGRAM_ACCESS_TOKEN', '')
@@ -24,53 +25,58 @@ class ActionDailyBreakfast(Action):
 
         try:
             response = requests.get(
-                'http://webcrawler-ru.botlino.com.br/cardapio/{}'
+                'http://webcrawler-ru.botlino.com.br/cardapio/{}/desjejum'
                 .format(day),
-                timeout=3
+                timeout=1
             ).json()
-        except Exception as exception:
-            logging.info(exception)
+        except TimeoutError as timeouterror:
             dispatcher.utter_message(
-                "É final de semana, amigo... Não tem RU não kkkk"
-                )
+                "Tentei pegar o cardápio mas minha net não cooperou..."
+                " Tenta pedir mais tarde, vou tentar resolver esse"
+                " problema o mais rápido possível!"
+            )
+            return []
+        except Exception as exception:
+            dispatcher.utter_message(
+                " Tive um probleminha em acessar o cardápio do RU. "
+                "Tô tentando resolver o problema o mais rápido possível!"
+            )
             return []
 
-        if day is not "Saturday" and day is not "Sunday":
+        lunch_menu = ""
 
-            lunch_menu = ""
+        for label in response:
+            dish = str(
+                '*' + label + '*' + ' ' +
+                response[label] + '\n')
+            lunch_menu += dish
 
-            for label in response['DESJEJUM']:
-                dish = str(
-                    '*' + label + '*' + ' ' +
-                    response['DESJEJUM'][label] + '\n')
-                lunch_menu += dish
+        messages.append(lunch_menu)
 
-            messages.append(lunch_menu)
+        welcome_message = 'Eai! Então... Pro café, nós teremos: '
 
-            welcome_message = 'Eai! Então... Pro café, nós teremos: '
+        data = requests.get(
+            'https://api.telegram.org/bot{}/sendMessage?chat_id={}&text={}'
+            .format(ACCESS_TOKEN, sender_id, welcome_message)
+        ).json()
+        messenger = ""
+        # Check user is from Telegram or Facebook
+        if not data['ok']:
+            dispatcher.utter_message(welcome_message)
+            messenger = "Facebook"
+        else:
+            messenger = "Telegram"
 
-            data = requests.get(
-                'https://api.telegram.org/bot{}/sendMessage?chat_id={}&text={}'
-                .format(ACCESS_TOKEN, sender_id, welcome_message)
-            ).json()
-            messenger = ""
-            # Check user is from Telegram or Facebook
-            if not data['ok']:
-                dispatcher.utter_message(welcome_message)
-                messenger = "Facebook"
-            else:
-                messenger = "Telegram"
-
-            if(messenger == "Telegram"):
-                for message in messages:
-                    requests.get(
-                        '{}/bot{}/sendMessage?chat_id={}&text={}&parse_mode={}'
-                        .format(
-                            API_URL, ACCESS_TOKEN, sender_id, message, PARSE
-                        )
+        if(messenger == "Telegram"):
+            for message in messages:
+                requests.get(
+                    '{}/bot{}/sendMessage?chat_id={}&text={}&parse_mode={}'
+                    .format(
+                        API_URL, ACCESS_TOKEN, sender_id, message, PARSE
                     )
-            elif(messenger == "Facebook"):
-                for message in messages:
-                    dispatcher.utter_message(message)
+                )
+        elif(messenger == "Facebook"):
+            for message in messages:
+                dispatcher.utter_message(message)
 
         return []
