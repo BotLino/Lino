@@ -2,7 +2,6 @@ import requests
 import time
 from rasa_core_sdk import Action
 from concurrent.futures import TimeoutError
-import logging
 
 
 class ActionDailyMenu(Action):

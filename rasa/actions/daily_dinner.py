@@ -55,9 +55,13 @@ class ActionDailyDinner(Action):
 
         welcome_message = 'Eai! Então... Pro jantar, nós teremos: '
 
-        data = requests.get(
-            'https://api.telegram.org/bot{}/sendMessage?chat_id={}&text={}'
-            .format(ACCESS_TOKEN, sender_id, welcome_message)
+        data = requests.post(
+            '{}/bot{}/sendMessage'
+            .format(API_URL, ACCESS_TOKEN),
+            data={
+                'chat_id': sender_id,
+                'text': welcome_message
+            }
         ).json()
         messenger = ""
         # Check user is from Telegram or Facebook
@@ -69,11 +73,14 @@ class ActionDailyDinner(Action):
 
         if(messenger == "Telegram"):
             for message in messages:
-                requests.get(
-                    '{}/bot{}/sendMessage?chat_id={}&text={}&parse_mode={}'
-                    .format(
-                        API_URL, ACCESS_TOKEN, sender_id, message, PARSE
-                    )
+                requests.post(
+                    '{}/bot{}/sendMessage'
+                    .format(API_URL, ACCESS_TOKEN),
+                    data={
+                     'chat_id': sender_id,
+                     'text': message,
+                     'parse_mode': PARSE
+                    }
                 )
         elif(messenger == "Facebook"):
             for message in messages:
