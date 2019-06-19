@@ -6,7 +6,7 @@ DOC_1 = 'login/index.html?response_type=code&'
 DOC_2 = 'client_id=102&redirect_uri=/documentodigital/index.html'
 UNB_URL = f'https://servicos.unb.br/dados/{DOC_1}{DOC_2}'
 GIT_URL = 'https://raw.githubusercontent.com/BotLino/Lino/'
-IMGS_PATH = '5_generalizando_fluxo/rasa/images/DocumentsProof/'
+IMGS_PATH = 'devel/rasa/images/DocumentsProof/'
 
 
 class ActionDocumentsProof(Action):
