@@ -1,7 +1,10 @@
 import requests
 import time
+import json
 from rasa_core_sdk import Action
 from concurrent.futures import TimeoutError
+
+DOWNLOAD_PATH = '/rasa/downloads'
 
 
 class ActionDailyMenu(Action):
@@ -13,26 +16,8 @@ class ActionDailyMenu(Action):
 
         day = time.strftime('%A', time.localtime())
 
-        # Change the url if you have your own webcrawler server
-        try:
-            response = requests.get(
-                'http://webcrawler-ru.botlino.com.br/cardapio/{}'
-                .format(day),
-                timeout=3
-            ).json()
-        except TimeoutError as timeouterror:
-            dispatcher.utter_message(
-                "Tentei pegar o cardápio mas minha net não cooperou..."
-                " Tenta pedir mais tarde, vou tentar resolver esse"
-                " problema o mais rápido possível!"
-            )
-            return []
-        except Exception as exception:
-            dispatcher.utter_message(
-                " Tive um probleminha em acessar o cardápio do RU. "
-                "Tô tentando resolver o problema o mais rápido possível!"
-            )
-            return []
+        menu_file = open(f'{DOWNLOAD_PATH}/general.json')
+        response = json.load(menu_file)
 
         messages.append('Eai! Então... Pro café da manhã, nós teremos: ')
 
