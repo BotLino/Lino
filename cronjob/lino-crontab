@@ -1,0 +1,1 @@
+0 0 * * * export $(cat /loaded-env.txt | xargs); python /Lino/cronjob/scripts/build_specific_menu.py

@@ -9,6 +9,7 @@ RUN pip install --upgrade pip && \
 
 ADD ./rasa/actions/ /rasa/actions/
 ADD ./rasa/Makefile /rasa/Makefile
+ADD ./downloads/ /rasa/downloads/
 
 WORKDIR rasa/
 
