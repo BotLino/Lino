@@ -9,9 +9,13 @@ RUN pip install --upgrade pip && \
 
 ADD ./rasa/actions/ /rasa/actions/
 ADD ./rasa/Makefile /rasa/Makefile
-ADD ./downloads/ /rasa/downloads/
+ADD ./cronjob/scripts/build_specific_menu.py /rasa/scripts/build_specific_menu.py
+
+RUN mkdir /rasa/downloads/
 
 WORKDIR rasa/
+
+RUN python scripts/build_specific_menu.py
 
 EXPOSE 5055
 

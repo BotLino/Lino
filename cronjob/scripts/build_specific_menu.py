@@ -4,8 +4,7 @@ import time
 import os
 
 RUCRAWLER_URL = os.getenv('RUCRAWLER_URL', 'http://webcrawler-ru.botlino.com.br/cardapio/')
-DOWNLOAD_PATH = '../Lino/downloads/'
-
+DOWNLOAD_PATH = "/rasa/downloads/"
 
 class BuildSpecificMenu():
     def run_specifics(self):
