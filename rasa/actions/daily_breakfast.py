@@ -2,12 +2,14 @@ import requests
 import os
 import time
 import logging
+import json
 from concurrent.futures import TimeoutError
 from rasa_core_sdk import Action
 
 ACCESS_TOKEN = os.getenv('TELEGRAM_ACCESS_TOKEN', '')
 API_URL = 'https://api.telegram.org'
 PARSE = 'Markdown'
+DOWNLOAD_PATH = '/rasa/downloads'
 
 
 class ActionDailyBreakfast(Action):
@@ -23,31 +25,14 @@ class ActionDailyBreakfast(Action):
         logging.warning(tracker_state)
         sender_id = tracker_state['sender_id']
 
-        try:
-            response = requests.get(
-                'http://webcrawler-ru.botlino.com.br/cardapio/{}/desjejum'
-                .format(day),
-                timeout=1
-            ).json()
-        except TimeoutError as timeouterror:
-            dispatcher.utter_message(
-                "Tentei pegar o cardápio mas minha net não cooperou..."
-                " Tenta pedir mais tarde, vou tentar resolver esse"
-                " problema o mais rápido possível!"
-            )
-            return []
-        except Exception as exception:
-            dispatcher.utter_message(
-                " Tive um probleminha em acessar o cardápio do RU. "
-                "Tô tentando resolver o problema o mais rápido possível!"
-            )
-            return []
+        menu_file = open(f'{DOWNLOAD_PATH}/desjejum.json')
+        response = json.load(menu_file)
 
         lunch_menu = ""
 
         for label in response:
             dish = str(
-                '*' + label + '*' + ': ' +
+                '*' + label + '*' + ' ' +
                 response[label] + '\n')
             lunch_menu += dish
 
@@ -56,8 +41,7 @@ class ActionDailyBreakfast(Action):
         welcome_message = 'Eai! Então... Pro café, nós teremos: '
 
         data = requests.post(
-            '{}/bot{}/sendMessage'
-            .format(API_URL, ACCESS_TOKEN),
+            f'{API_URL}/bot{ACCESS_TOKEN}/sendMessage',
             data={
                 'chat_id': sender_id,
                 'text': welcome_message
@@ -74,8 +58,7 @@ class ActionDailyBreakfast(Action):
         if(messenger == "Telegram"):
             for message in messages:
                 requests.post(
-                    '{}/bot{}/sendMessage'
-                    .format(API_URL, ACCESS_TOKEN),
+                    f'{API_URL}/bot{ACCESS_TOKEN}/sendMessage',
                     data={
                         'chat_id': sender_id,
                         'text': message,
