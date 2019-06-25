@@ -5,6 +5,7 @@ from concurrent.futures import TimeoutError
 from rasa_core_sdk import Action
 from .constants import ACCESS_TOKEN, API_URL, PARSE
 
+
 # Action to send dinner menu to user
 class ActionDailyDinner(Action):
     def name(self):

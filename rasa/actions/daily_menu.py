@@ -3,6 +3,7 @@ import time
 from rasa_core_sdk import Action
 from concurrent.futures import TimeoutError
 
+
 # Action to send breakfast, dinner and lunch menu to user
 class ActionDailyMenu(Action):
     def name(self):

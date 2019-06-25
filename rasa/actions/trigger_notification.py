@@ -1,6 +1,7 @@
 from rasa_core_sdk import Action
 from rasa_core_sdk.events import UserUttered
 
+
 # Action to send a notification to user
 class ActionTriggerNotification(Action):
     def name(self):
@@ -14,6 +15,7 @@ class ActionTriggerNotification(Action):
                             'name': 'asks_about_register_notifications',
                             'confidence': 1.0}))
         return []
+
 
 # Action to remove notifications from user
 class ActionTriggerUnregisterNotification(Action):
