@@ -117,13 +117,13 @@ def get_url_facebook_parameter():
             .format(PSID, FACEBOOK_ACCESS_TOKEN))
 
 
-result = get_email()
+user_email = get_email()
 
 telegram_users = get_telegram_users()
 facebook_users = get_facebook_users()
 
-if result:
-    response = parse_json(result)
+if user_email:
+    response = parse_json(user_email)
     if response != "":
         notify_telegram(response, telegram_users)
         notify_facebook(response, facebook_users)
