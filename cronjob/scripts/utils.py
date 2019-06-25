@@ -1,4 +1,5 @@
 import os
+from pymongo import MongoClient
 
 URI_TELEGRAM = os.getenv('URI_TELEGRAM', '')
 

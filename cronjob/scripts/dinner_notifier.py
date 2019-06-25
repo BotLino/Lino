@@ -16,26 +16,6 @@ URI_TELEGRAM = os.getenv('URI_TELEGRAM', '')
 URI_FACEBOOK = os.getenv('URI_FACEBOOK', '')
 
 
-# def get_telegram_users(notification_type):
-#     client = MongoClient(URI_TELEGRAM)
-#     db = client['lino_telegram']
-
-#     users = db.users.find(
-#         {
-#             "notification": {
-#                 "description": notification_type,
-#                 "value": True
-#             }
-#         },
-#         {
-#             '_id': 0,
-#             'sender_id': 1
-#         }
-#     )
-
-#     return users
-
-
 def get_facebook_users(notification_type):
     client = MongoClient(URI_FACEBOOK)
     db = client['lino_facebook']
