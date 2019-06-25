@@ -1,6 +1,4 @@
-import os
 from rasa_core_sdk import Action
-from .constants import TELEGRAM_ACCESS_TOKEN, FACEBOOK_ACCESS_TOKEN, TELEGRAM_DB_URI, FACEBOOK_DB_URI
 
 
 class ActionButtonsNotificationTypes(Action):

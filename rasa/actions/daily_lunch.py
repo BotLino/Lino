@@ -1,5 +1,4 @@
 import requests
-import os
 import time
 import logging
 from concurrent.futures import TimeoutError
