@@ -6,34 +6,34 @@ import pycurl
 import logging
 from urllib.parse import urlencode
 from pymongo import MongoClient
-
+from .utils import get_telegram_users
 # If you want to use your own bot to development add the bot token as
 # second parameters
 TELEGRAM_ACCESS_TOKEN = os.getenv('TELEGRAM_ACCESS_TOKEN', '')
 FACEBOOK_ACCESS_TOKEN = os.getenv('FACEBOOK_ACCESS_TOKEN', '')
 PSID = os.getenv('PSID', '')
-URI_TELEGRAM = os.getenv('URI_TELEGRAM', '')
+# URI_TELEGRAM = os.getenv('URI_TELEGRAM', '')
 URI_FACEBOOK = os.getenv('URI_FACEBOOK', '')
 
 
-def get_telegram_users(notification_type):
-    client = MongoClient(URI_TELEGRAM)
-    db = client['lino_telegram']
+# def get_telegram_users(notification_type):
+#     client = MongoClient(URI_TELEGRAM)
+#     db = client['lino_telegram']
 
-    users = db.users.find(
-        {
-            "notification": {
-                "description": notification_type,
-                "value": True
-            }
-        },
-        {
-            '_id': 0,
-            'sender_id': 1
-        }
-    )
+#     users = db.users.find(
+#         {
+#             "notification": {
+#                 "description": notification_type,
+#                 "value": True
+#             }
+#         },
+#         {
+#             '_id': 0,
+#             'sender_id': 1
+#         }
+#     )
 
-    return users
+#     return users
 
 
 def get_facebook_users(notification_type):
