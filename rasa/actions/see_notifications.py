@@ -6,7 +6,7 @@ from rasa_core_sdk import Action
 from .constants import TELEGRAM_ACCESS_TOKEN, FACEBOOK_ACCESS_TOKEN, TELEGRAM_DB_URI, FACEBOOK_DB_URI
 
 
-
+# Action to send a list of notifications to user
 class ActionListNotifications(Action):
     """
     Lists all the notification types the user is registered in.
@@ -14,6 +14,7 @@ class ActionListNotifications(Action):
     def name(self):
         return "action_list_notifications"
 
+    # Verify user register to receive notifications and list notifications
     def run(self, dispatcher, tracker, domain):
         messages = []
         messages.append('Você está cadastrado nesses tipos de notificação:')

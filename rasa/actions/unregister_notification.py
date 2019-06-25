@@ -5,7 +5,7 @@ from pymongo import MongoClient
 from rasa_core_sdk import Action
 from .constants import TELEGRAM_ACCESS_TOKEN, FACEBOOK_ACCESS_TOKEN, TELEGRAM_DB_URI, FACEBOOK_DB_URI
 
-
+# Action to remove register from user 
 class ActionUnregisterNotification(Action):
     def name(self):
         return "action_unregister_notification"

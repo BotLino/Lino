@@ -3,7 +3,7 @@ from rasa_core_sdk import Action
 import requests
 from .constants import TELEGRAM_ACCESS_TOKEN
 
-
+# Action to show registration schedule to user
 class ActionCalendar(Action):
     def name(self):
         return "action_calendar"
