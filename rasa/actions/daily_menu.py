@@ -68,11 +68,3 @@ class ActionDailyMenu(Action):
             dispatcher.utter_message(message)
 
         return []
-
-
-class ActionNextMeal(Action):
-    def name(self):
-        return "action_next_meal"
-
-    def run(self, dispatcher, tracker, domain):
-        pass
