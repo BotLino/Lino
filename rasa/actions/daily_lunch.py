@@ -47,7 +47,7 @@ class ActionDailyLunch(Action):
 
         if not data['ok']:
             dispatcher.utter_message(welcome_message)
-            self.send_messages_to_facebook(menu_messages)
+            self.send_messages_to_facebook(dispatcher, menu_messages)
         else:
             self.send_messages_to_telegram(sender_id, menu_messages)
 
@@ -105,6 +105,6 @@ class ActionDailyLunch(Action):
                 }
             )
 
-    def send_messages_to_facebook(self, messages):
+    def send_messages_to_facebook(self, dispatcher, messages):
         for message in messages:
             dispatcher.utter_message(message)
