@@ -9,6 +9,7 @@ GIT_URL = 'https://raw.githubusercontent.com/BotLino/Lino/'
 IMGS_PATH = 'devel/rasa/images/DocumentsProof/'
 
 
+# Action to send information about online documents
 class ActionDocumentsProof(Action):
     def name(self):
         return "action_documents_proof"

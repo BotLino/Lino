@@ -1,15 +1,12 @@
 import requests
-import os
 import time
 import logging
 from concurrent.futures import TimeoutError
 from rasa_core_sdk import Action
-
-ACCESS_TOKEN = os.getenv('TELEGRAM_ACCESS_TOKEN', '')
-API_URL = 'https://api.telegram.org'
-PARSE = 'Markdown'
+from .constants import ACCESS_TOKEN, API_URL, PARSE
 
 
+# Action to send lunch menu to user
 class ActionDailyLunch(Action):
     def name(self):
         return "action_daily_lunch"

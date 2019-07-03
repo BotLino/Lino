@@ -1,12 +1,8 @@
-import os
 from rasa_core_sdk import Action
 import requests
 
-# If you want to use your own bot to development add the bot token as
-# second parameters
-TELEGRAM_ACCESS_TOKEN = os.getenv('TELEGRAM_ACCESS_TOKEN', '')
 
-
+# Action to show registration schedule to user
 class ActionCalendar(Action):
     def name(self):
         return "action_calendar"

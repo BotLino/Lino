@@ -1,18 +1,13 @@
-import os
 import requests
 import json
 from pymongo import MongoClient
 from rasa_core_sdk import Action
-
-# If you want to use your own bot to development add the bot token as
-# second parameters
-TELEGRAM_ACCESS_TOKEN = os.getenv('TELEGRAM_ACCESS_TOKEN', '')
-FACEBOOK_ACCESS_TOKEN = os.getenv('FACEBOOK_ACCESS_TOKEN', '')
-
-TELEGRAM_DB_URI = os.getenv('TELEGRAM_DB_URI', '')
-FACEBOOK_DB_URI = os.getenv('FACEBOOK_DB_URI', '')
+from .constants import (
+    TELEGRAM_ACCESS_TOKEN, TELEGRAM_DB_URI,
+    FACEBOOK_DB_URI)
 
 
+# Action to send a list of notifications to user
 class ActionListNotifications(Action):
     """
     Lists all the notification types the user is registered in.
@@ -20,6 +15,7 @@ class ActionListNotifications(Action):
     def name(self):
         return "action_list_notifications"
 
+    # Verify user register to receive notifications and list notifications
     def run(self, dispatcher, tracker, domain):
         messages = []
         messages.append('Você está cadastrado nesses tipos de notificação:')

@@ -163,13 +163,13 @@ def get_url_facebook_parameter():
             .format(PSID, FACEBOOK_ACCESS_TOKEN))
 
 
-menu = get_daily_menu()
+breakfast_menu = get_daily_menu()
 
 telegram_users = get_telegram_users('breakfast meal')
 facebook_users = get_facebook_users('breakfast meal')
 
-if menu:
-    messages = parse_daily_notification_to_json(menu)
+if breakfast_menu:
+    messages = parse_daily_notification_to_json(breakfast_menu)
     notify_daily_meal_to_telegram(messages, telegram_users)
     notify_daily_meal_to_facebook(messages, facebook_users)
 else:
