@@ -1,76 +1,103 @@
 import requests
-import os
 import time
 import logging
+from concurrent.futures import TimeoutError
 from rasa_core_sdk import Action
-
-ACCESS_TOKEN = os.getenv('TELEGRAM_ACCESS_TOKEN', '')
-API_URL = 'https://api.telegram.org'
-PARSE = 'Markdown'
+from .constants import ACCESS_TOKEN, API_URL, PARSE
 
 
+# Action to send breakfast menu to user
 class ActionDailyBreakfast(Action):
     def name(self):
         return "action_daily_breakfast"
 
     def run(self, dispatcher, tracker, domain):
-        messages = []
-
-        day = time.strftime('%A', time.localtime())
-
-        tracker_state = tracker.current_state()
-        logging.warning(tracker_state)
-        sender_id = tracker_state['sender_id']
+        day = self.get_current_day()
 
         try:
-            response = requests.get(
-                'http://webcrawler-ru.botlino.com.br/cardapio/{}'
-                .format(day),
-                timeout=3
-            ).json()
-        except Exception as exception:
-            logging.info(exception)
+            menu = self.request_menu(day)
+        except TimeoutError as timeouterror:
             dispatcher.utter_message(
-                "É final de semana, amigo... Não tem RU não kkkk"
-                )
+                "Tentei pegar o cardápio mas minha net não cooperou..."
+                " Tenta pedir mais tarde, vou tentar resolver esse"
+                " problema o mais rápido possível!"
+            )
+            return []
+        except Exception as exception:
+            dispatcher.utter_message(
+                " Tive um probleminha em acessar o cardápio do RU. "
+                "Tô tentando resolver o problema o mais rápido possível!"
+            )
             return []
 
-        if day is not "Saturday" and day is not "Sunday":
+        menu_messages = self.format_menu(menu)
 
-            lunch_menu = ""
+        welcome_message = 'Eai! Então... Pro café, nós teremos: '
 
-            for label in response['DESJEJUM']:
-                dish = str(
-                    '*' + label + '*' + ' ' +
-                    response['DESJEJUM'][label] + '\n')
-                lunch_menu += dish
+        sender_id = self.get_sender_id(tracker)
 
-            messages.append(lunch_menu)
+        data = self.request_user_data(sender_id, welcome_message)
 
-            welcome_message = 'Eai! Então... Pro café, nós teremos: '
-
-            data = requests.get(
-                'https://api.telegram.org/bot{}/sendMessage?chat_id={}&text={}'
-                .format(ACCESS_TOKEN, sender_id, welcome_message)
-            ).json()
-            messenger = ""
-            # Check user is from Telegram or Facebook
-            if not data['ok']:
-                dispatcher.utter_message(welcome_message)
-                messenger = "Facebook"
-            else:
-                messenger = "Telegram"
-
-            if(messenger == "Telegram"):
-                for message in messages:
-                    requests.get(
-                        '{}/bot{}/sendMessage?chat_id={}&text={}&parse_mode={}'
-                        .format(
-                            API_URL, ACCESS_TOKEN, sender_id, message, PARSE
-                        )
-                    )
-            elif(messenger == "Facebook"):
-                for message in messages:
-                    dispatcher.utter_message(message)
+        if not data['ok']:
+            dispatcher.utter_message(welcome_message)
+            self.send_messages_to_facebook(dispatcher, menu_messages)
+        else:
+            self.send_messages_to_telegram(sender_id, menu_messages)
 
         return []
+
+    def get_current_day(self):
+        return time.strftime('%A', time.localtime())
+
+    def get_sender_id(self, tracker):
+        tracker_state = tracker.current_state()
+        logging.warning(tracker_state)
+        return tracker_state['sender_id']
+
+    def request_menu(self, day):
+        return requests.get(
+            'http://webcrawler-ru.botlino.com.br/cardapio/{}/desjejum'
+            .format(day),
+            timeout=1
+        ).json()
+
+    def format_menu(self, menu):
+        formatted_menu = ""
+        messages = []
+
+        for label in menu:
+            dish = str(
+                '*' + label + '*' + ': ' +
+                menu[label] + '\n')
+            formatted_menu += dish
+
+        messages.append(formatted_menu)
+        return messages
+
+    def request_user_data(self, sender_id, message):
+        data = requests.post(
+            '{}/bot{}/sendMessage'
+            .format(API_URL, ACCESS_TOKEN),
+            data={
+                'chat_id': sender_id,
+                'text': message
+            }
+        ).json()
+
+        return data
+
+    def send_messages_to_telegram(self, sender_id, messages):
+        for message in messages:
+            requests.post(
+                '{}/bot{}/sendMessage'
+                .format(API_URL, ACCESS_TOKEN),
+                data={
+                    'chat_id': sender_id,
+                    'text': message,
+                    'parse_mode': PARSE
+                }
+            )
+
+    def send_messages_to_facebook(self, dispatcher, messages):
+        for message in messages:
+            dispatcher.utter_message(message)

@@ -1,103 +1,180 @@
-version: '3'
+version: '2'
 
 services:
-  lino:
-    # If you want to development and use another image,
-    # change the image to the Dockerfile that corresponds to the one you want to use.
-    build:
-      context: .
-      dockerfile: docker/Telegram.Dockerfile
-    ports:
-      - 5002:5002
-    volumes:
-      - .:/2018.2-Lino
-    stdin_open: true
-    tty: true
-    environment:
-      - TRAINING_EPOCHS: ${TRAINING_EPOCHS}
-      - TELEGRAM_ACCESS_TOKEN: ${TELEGRAM_ACCESS_TOKEN}
-      - VERIFY: ${VERIFY}
-      - PSID: ${PSID}
-      - FACEBOOK_ACCESS_TOKEN: ${FACEBOOK_ACCESS_TOKEN}
-      - SECRET: ${SECRET}
-      - WEBHOOK_URL: ${WEBHOOK_URL}
-      - TELEGRAM_DB_URI: ${TELEGRAM_DB_URI}
-      - FACEBOOK_DB_URI: ${FACEBOOK_DB_URI}
-    # bot credentials in train.py or another train file.
-    depends_on:
-      - actions
-      - cronjob
-      - mongo_telegram
-      - mongo_facebook
+    lino-server:
+        container_name: lino-server
+        image: botlino/lino:latest
+        ports:
+            - 5002:5002
+        stdin_open: true
+        tty: true
+        environment:
+            - TRAINING_EPOCHS: ${TRAINING_EPOCHS}
+            - TELEGRAM_ACCESS_TOKEN: ${TELEGRAM_ACCESS_TOKEN}
+            - VERIFY: ${VERIFY}
+            - TELEGRAM_DB_URI: ${TELEGRAM_DB_URI}
+            - FACEBOOK_ACCESS_TOKEN: ${FACEBOOK_ACCESS_TOKEN}
+            - PSID: ${PSID}
+            - SECRET: ${SECRET}
+            - FACEBOOK_DB_URI: ${FACEBOOK_DB_URI}
+            - WEBHOOK_URL: ${WEBHOOK_URL}
+        depends_on:
+            - cronjob
+            - mongo_telegram
+            - mongo_facebook
+            - actions
 
-  mongo_telegram:
-    image: mongo:latest
-    command: mongod --port 27010
-    volumes:
-      - /l/mongo_telegram/mongo_telegram_db:/data/db
-    ports:
-      - 27010:27010
+    actions:
+        container_name: lino-actions
+        image: botlino/actions:latest
+        ports:
+            - 5055:5055
+        volumes:
+            - ./rasa/actions:/rasa/actions
+            - ./rasa/Makefile:/rasa/Makefile
+        command: "make run-actions"
+        environment:
+            - TELEGRAM_ACCESS_TOKEN: ${TELEGRAM_ACCESS_TOKEN}
+            - VERIFY: ${VERIFY}
+            - TELEGRAM_DB_URI: ${TELEGRAM_DB_URI}
+            - FACEBOOK_ACCESS_TOKEN: ${FACEBOOK_ACCESS_TOKEN}
+            - PSID: ${PSID}
+            - SECRET: ${SECRET}
+            - FACEBOOK_DB_URI: ${FACEBOOK_DB_URI}
 
-  mongo_facebook:
-    image: mongo:latest
-    command: mongod --port 27011
-    volumes:
-      - /l/mongo_facebook/mongo_facebook_db:/data/db
-    ports:
-      - 27011:27011
+    mongo_telegram:
+        container_name: mongo-telegram
+        image: mongo:latest
+        command: mongod --port 27014
+        volumes:
+            - /l/lino/mongo-lino:/data/db
+        ports:
+            - 27014:27014
 
-  cronjob:
-    image: guila/cronjob:latest
-    volumes:
-      - ./outputs:/home
-    stdin_open: true
-    tty: true
-    environment:
-      - URI_TELEGRAM: ${URI_TELEGRAM}
-      - URI_FACEBOOK: ${URI_FACEBOOK}
-      - TELEGRAM_ACCESS_TOKEN: ${TELEGRAM_ACCESS_TOKEN}
-      - FACEBOOK_ACCESS_TOKEN: ${FACEBOOK_ACCESS_TOKEN}
-      - PSID: ${PSID}
-    depends_on:
-      - mongo_telegram
-      - mongo_facebook
+    mongo_facebook:
+        container_name: mongo-facebook
+        image: mongo:latest
+        command: mongod --port 27013
+        volumes:
+            - /l/lino/mongo-facebook:/data/db
+        ports:
+            - 27013:27013
 
-  actions:
-    build:
-      context: .
-      dockerfile: ./docker/Actions.Dockerfile
-    ports:
-      - 5055:5055
-    volumes:
-      - ./rasa/actions:/rasa/actions
-      - ./rasa/Makefile:/rasa/Makefile
-    command: "make run-actions"
-    environment:
-      - TELEGRAM_ACCESS_TOKEN: ${TELEGRAM_ACCESS_TOKEN}
-      - VERIFY: ${VERIFY}
-      - TELEGRAM_DB_URI: ${TELEGRAM_DB_URI}
-      - FACEBOOK_DB_URI: ${FACEBOOK_DB_URI}
+    cronjob:
+        container_name: cronjob-lino
+        image: botlino/cronjob:latest
+        volumes:
+            - ./outputs:/home
+        stdin_open: true
+        tty: true
+        environment:
+            - TELEGRAM_ACCESS_TOKEN: ${TELEGRAM_ACCESS_TOKEN}
+            - URI_TELEGRAM: ${TELEGRAM_DB_URI}
+            - FACEBOOK_ACCESS_TOKEN: ${FACEBOOK_ACCESS_TOKEN}
+            - PSID: ${PSID}
+            - SECRET: ${SECRET}
+            - URI_FACEBOOK: ${FACEBOOK_DB_URI}
+        depends_on:
+            - mongo_telegram
+            - mongo_facebook
 
+    nginx:
+        container_name: nginx
+        image: nginx:1.11
+        restart: unless-stopped
+        ports:
+            - 80:80
+            - 443:443
+        volumes:
+            - /etc/letsencrypt:/etc/letsencrypt
+            - /etc/nginx.conf:/etc/nginx/conf.d/default.conf
+        depends_on:
+            - lino-server
 
-  elasticsearch:
-      image: docker.elastic.co/elasticsearch/elasticsearch:5.4.3
-      container_name: elasticsearch
-      ports:
-          - "9200:9200"
-          - "9300:9300"
-      networks:
-          - docker_elk
-  kibana:
-      image: docker.elastic.co/kibana/kibana:5.4.3
-      container_name: kibana
-      environment:
-          - "ELASTICSEARCH_URL=http://elasticsearch:9200"
-      ports:
-          - "5601:5601"
-      networks:
-          - docker_elk
-      depends_on:
-          - elasticsearch
+    webcrawler:
+        container_name: webcrawler-ru
+        image: botlino/webcrawler:latest
+        ports:
+            - 5010:5010
+        environment:
+            - DB_URI: ${DB_URI}
+        depends_on:
+            - mongo_ru
+
+    mongo_ru:
+        container_name: mongo_ru
+        image: mongo:latest
+        command: mongod --port 27017
+        volumes:
+            - /l/crawler/crawler_db:/data/db
+        ports:
+            - 27017:27017
+
+    cronjob_webcrawler_ru:
+        container_name: cronjob_webcrawler_ru
+        image: botlino/cronjob-webcrawler-ru:latest
+
+    webcrawler_matricula:
+        container_name: webcrawler_matricula
+        image: botlino/webcrawler-matricula:latest
+        ports:
+            - 5012:5012
+
+    lino_alerta:
+        container_name: lino_alerta
+        image: guila/lino-alerta:latest
+        depends_on:
+            - mongo_alerta
+        ports:
+            - 5014:5014
+        environment:
+            - URI: ${LINO_ALERTA_DB}
+            - CLIENT_ID: ${CLIENT_ID}
+            - PROJECT_ID: ${PROJECT_ID}
+            - AUTH_URI: ${AUTH_URI}
+            - TOKEN_URI: ${TOKEN_URI}
+            - AUTH_PROVIDER: ${AUTH_PROVIDER}
+            - CLIENT_SECRET: ${CLIENT_SECRET}
+            - REDIRECT_URIS_ZERO: ${REDIRECT_URIS_ZERO}
+            - REDIRECT_URIS_ONE: ${REDIRECT_URIS_ONE}
+            - ACCESS_TOKEN: ${ACCESS_TOKEN}
+            - REFRESH_TOKEN: ${REFRESH_TOKEN}
+            - SCOPE: ${SCOPE}
+            - TOKEN_TYPE: ${TOKEN_TYPE}
+            - EXPIRY_DATE: ${EXPIRY_DATE}
+
+    mongo_alerta:
+        container_name: mongo_alerta
+        image: mongo:latest
+        ports:
+            - 27015:27015
+        command: mongod --port 27015
+        volumes:
+            - /l/alerta/alerta_db:/data/db
+
+    elasticsearch:
+        image: docker.elastic.co/elasticsearch/elasticsearch:5.4.3
+        container_name: elasticsearch
+        ports:
+            - "9200:9200"
+            - "9300:9300"
+        networks:
+            - docker_elk
+    kibana:
+        image: docker.elastic.co/kibana/kibana:5.4.3
+        container_name: kibana
+        environment:
+            - "ELASTICSEARCH_URL=http://elasticsearch:9200"
+        ports:
+            - "5601:5601"
+        networks:
+            - docker_elk
+        depends_on:
+            - elasticsearch
+
 networks:
-docker_elk:
-  driver: bridge
+    default:
+        external:
+            name: nginx
+    docker_elk:
+        driver: bridge
