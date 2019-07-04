@@ -11,6 +11,8 @@ intents:
   - asks_dinner_menu
   - asks_lunch_menu
   - asks_breakfast_menu
+  - languages
+  - languages_course
 
   - notifications
   - action_ask_notification
@@ -19,7 +21,23 @@ intents:
   - notification_types
   - asks_about_register_notifications
 
+  - asks_about_documents
+  - asks_about_schedule
+  - asks_register_proof
+  - asks_regular_proof
+  - asks_tutoring_proof
+  - asks_course_period_proof
+  - asks_school_history_proof
   - asks_documents_proof
+  - asks_course_price
+  - asks_duration
+  - asks_campus
+  - asks_level_test
+  - asks_credit_granting
+  - asks_course_scholarship
+  - asks_course_absence
+  - asks_change_class
+  - asks_cancellation_refund
 
   - asks_about_gmail
 
@@ -148,6 +166,16 @@ actions:
   - utter_compliments_reply
   - utter_start
   - utter_menu
+  - utter_languages_course
+  - utter_course_price
+  - utter_duration
+  - utter_campus
+  - utter_level_test
+  - utter_credit_granting
+  - utter_course_scholarship
+  - utter_course_absence
+  - utter_change_class
+  - utter_cancellation_refund
   - action_daily_menu
   - action_daily_dinner
   - action_daily_lunch
@@ -287,7 +315,109 @@ templates:
         E eu tenho as incríveis habilidades de falar sobre documentos acadêmicos, cardápio do RU, alertas da comunidade e calendário de matrícula
 
         Se está procurando por alguma dessas opções é só me falar qual que eu posso te ajudar, bb.
+    
+  utter_languages_course:
+    - text: |
+        E aê mano! Tá interessado em aprender um novo idioma né?
 
+        Posso te ajudar com algumas informações sobre o UnB idiomas basta me dizer qual sua dúvida, parça.
+
+        - Valores dos cursos
+        - Duração dos módulos e semestre letivo
+        - Campus que possuem o curso 
+        - Testes de nivelamento
+        - Concessão de créditos
+        - Sistema de bolsas para estudantes que recebem auxílio estudantil
+        - Limite de faltas para cada curso
+        - Mudança de turmas durante o semestre letivo
+        - Cancelamento e reembolso do valor pago
+
+  utter_course_price:
+    - text: |
+        Se liga nos valores dos cursos em 2019, esta é a tabela de valores para alunos da UnB e pagamento a vista.
+
+        Cursos Tradicionais
+          Inglês / Inglês Advanced / Francês / Espanhol / Esperanto / Turco (45h) - R$ 471,45
+          Alemão / Árabe / Coreano / Grego Moderno / Hebraico / Italiano / Russo (45h) - R$ 703,50
+          Inglês Instrumental / Francês Instrumental (45h) - R$ 703,50
+          Chinês (Mandarim) / Chinês (Conversação) (60h) - R$ 666,75
+          Japonês (60h) - R$ 471,45
+          Temático (45h) - R$ 703,50
+        
+        Cursos para Terceira Idade
+          Inglês / Francês / Espanhol (45h) - R$ 362,25
+          Alemão (45h) - R$ 552,30
+        
+        Cursos Preparatórios
+          Preparatório TOELF / IELTS / DELF (60h) - R$ 789,60
+          Preparatório DELE (Espanhol) (45h) - R$ 593,25
+
+  utter_duration:
+    - text: |
+        Então, no UnB Idiomas, existem cursos de 45 e 60 horas.
+
+        Os cursos de 45h, são de 25/03/19 a 26/06/19;
+        já os cursos de 60h, são de 18/03/19 a 19/07/19
+
+  utter_campus:
+    - text: |
+        Todos os campus da Universidade de Brasília possuem UnB Idiomas. Atualmente, estes são os cursos ofertados
+        
+        Asa Norte - Árabe, Alemão, Coreano, Espanhol, Esperanto, Francês, Grego Moderno, Italiano, Japonês, Russo, Turco, Mandarim;
+        Gama e Ceilândia - Francês, Inglês;
+        Planaltina - Inglês
+
+  utter_level_test:
+    - text: |
+        O teste de nivelamento é importante para que o pessoal do UnB Idiomas te coloque na turma certa.
+
+        As provas de nivelamento, nesse semestre serão realizadas durante duas semanas;
+        
+        1ª Semana 25/02 a 01/03/2019
+        2ª Semana 11/03 a 15/03/2019
+
+        O teste custa R$ 42,00!
+        Fica ligado pra não perder as datas!
+
+  utter_course_scholarship:
+    - text: |
+        Para conseguir a bolsa de estudo do UnB Idiomas você precisa realizar um cadastro no site do UnB Idiomas a qualquer momento
+        
+        http://www.unbidiomas.unb.br
+
+        Depois disso, você precisa incluir seu comprovante de vínculo no Portal do Aluno até o dia 15/03/2019;
+        Finalmente, você realizará sua tentativa de matrícula online, Das 14h do dia 19/03/2019 às 23h59 do dia 20/03/2019 
+  
+        A matrícula é por ordem de pedidos, então fique ligado!
+
+  utter_course_absence:
+    - text: |
+        O limite de faltas que você pode ter é 25% do total de horas-aula do seu curso, caso você queira conferir uma tabela detalhada sobre isso, confere nesse linK!
+
+        http://www.unbidiomas.unb.br/wp-content/uploads/2019/02/Normas-UnB-Idiomas_fevereiro-2019V2.pdf
+
+  utter_change_class:
+    - text: |
+        Para mudar de turma, algumas coisas são precisas;
+
+        Apresentar um requerimento, com a justificativa até a 4ª aula, mas ficar atento que aulas na semana contam como duas aulas.
+        
+        Então, se houver vaga na turma que você quer ir, você precisa pagar o valor de R$ 42,00 e em até 5 dias úteis, será confirmada a mudança de turma em seu email.
+ 
+  utter_credit_granting:
+    - text: |
+        Para ganhar créditos em linguas estrangeiras, o processo não tem nada com o UnB Idiomas, mas sim pelo Departamento de Línguas Estrangeiras e Tradução.
+
+        A quantidade de créditos de acordo com o comprovante ou diploma apresentado e deve ser feita na Secretaria do Departamento de Línguas Estrangeiras e Tradução, no campus Darcy Ribeiro.
+
+        Em 2/2019, o período de solicitação será de 12/08 a 30/08/2019.
+
+  utter_cancellation_refund:
+    - text: |
+        Para conseguir o cancelamento da matrícula, você precisa ficar ligado, pois você só pode receber seu reembolso até o primeiro dia útil, após as 4 primeiras horas-aula.
+
+        O requerimento deve ser presencial e se você tiver realizado alguma aula, o valor referente precisa ser pago em um posto do UnB Idiomas.
+        
   utter_goodbye:
     - text: |
         Até a próxima!
@@ -788,3 +918,4 @@ templates:
   utter_image:
     - text: "{text}:"
       image: "{image}"
+
