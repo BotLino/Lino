@@ -354,7 +354,11 @@ templates:
 
   utter_duration:
     - text: |
-        Dura muito tempo bro
+        Então, no UnB Idiomas, existem cursos de 45 e 60 horas.
+
+        Os cursos de 45h, são de 25/03/19 a 26/06/19;
+        já os cursos de 60h, são de 18/03/19 a 19/07/19
+
 
   utter_campus:
     - text: |
