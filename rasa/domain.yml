@@ -334,7 +334,23 @@ templates:
 
   utter_course_price:
     - text: |
-        O cursos custam $1000000000
+        Se liga nos valores dos cursos em 2019, esta é a tabela de valores para alunos da UnB e pagamento a vista.
+
+        Cursos Tradicionais
+          Inglês / Inglês Advanced / Francês / Espanhol / Esperanto / Turco (45h) - R$ 471,45
+          Alemão / Árabe / Coreano / Grego Moderno / Hebraico / Italiano / Russo (45h) - R$ 703,50
+          Inglês Instrumental / Francês Instrumental (45h) - R$ 703,50
+          Chinês (Mandarim) / Chinês (Conversação) (60h) - R$ 666,75
+          Japonês (60h) - R$ 471,45
+          Temático (45h) - R$ 703,50
+        
+        Cursos para Terceira Idade
+          Inglês / Francês / Espanhol (45h) - R$ 362,25
+          Alemão (45h) - R$ 552,30
+        
+        Cursos Preparatórios
+          Preparatório TOELF / IELTS / DELF (60h) - R$ 789,60
+          Preparatório DELE (Espanhol) (45h) - R$ 593,25
 
   utter_duration:
     - text: |
