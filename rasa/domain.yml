@@ -381,8 +381,15 @@ templates:
 
   utter_course_scholarship:
     - text: |
-        Para conseguir a bolsa de estudo do UnB Idiomas você precisa ser receber auxílio da universidade
+        Para conseguir a bolsa de estudo do UnB Idiomas você precisa realizar um cadastro no site do UnB Idiomas a qualquer momento
+        
+        http://www.unbidiomas.unb.br
+
+        Depois disso, você precisa incluir seu comprovante de vínculo no Portal do Aluno até o dia 15/03/2019;
+        Finalmente, você realizará sua tentativa de matrícula online, Das 14h do dia 19/03/2019 às 23h59 do dia 20/03/2019 
   
+        A matrícula é por ordem de pedidos, então fique ligado!
+
   utter_course_absence:
     - text: |
         O limite de faltas que você pode ter é 50
