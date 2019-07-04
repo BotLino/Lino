@@ -398,8 +398,12 @@ templates:
 
   utter_change_class:
     - text: |
-        Para mudar de classe precisa disso
+        Para mudar de turma, algumas coisas são precisas;
 
+        Apresentar um requerimento, com a justificativa até a 4ª aula, mas ficar atento que aulas na semana contam como duas aulas.
+        
+        Então, se houver vaga na turma que você quer ir, você precisa pagar o valor de R$ 42,00 e em até 5 dias úteis, será confirmada a mudança de turma em seu email.
+ 
   utter_credit_granting:
     - text: |
         Para mudar de classe precisa disso
