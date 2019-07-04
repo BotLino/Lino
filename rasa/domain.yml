@@ -406,7 +406,11 @@ templates:
  
   utter_credit_granting:
     - text: |
-        Para mudar de classe precisa disso
+        Para ganhar créditos em linguas estrangeiras, o processo não tem nada com o UnB Idiomas, mas sim pelo Departamento de Línguas Estrangeiras e Tradução.
+
+        A quantidade de créditos de acordo com o comprovante ou diploma apresentado e deve ser feita na Secretaria do Departamento de Línguas Estrangeiras e Tradução, no campus Darcy Ribeiro.
+
+        Em 2/2019, o período de solicitação será de 12/08 a 30/08/2019.
 
   utter_cancellation_refund:
     - text: |
