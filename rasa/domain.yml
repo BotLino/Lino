@@ -359,10 +359,13 @@ templates:
         Os cursos de 45h, são de 25/03/19 a 26/06/19;
         já os cursos de 60h, são de 18/03/19 a 19/07/19
 
-
   utter_campus:
     - text: |
-        Todos os campus da Universidade de Brasília possuem UnB Idiomas.
+        Todos os campus da Universidade de Brasília possuem UnB Idiomas. Atualmente, estes são os cursos ofertados
+        
+        Asa Norte - Árabe, Alemão, Coreano, Espanhol, Esperanto, Francês, Grego Moderno, Italiano, Japonês, Russo, Turco, Mandarim;
+        Gama e Ceilândia - Francês, Inglês;
+        Planaltina - Inglês
 
   utter_level_test:
     - text: |
