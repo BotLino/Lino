@@ -369,7 +369,15 @@ templates:
 
   utter_level_test:
     - text: |
-        O teste de nivelamento é 
+        O teste de nivelamento é importante para que o pessoal do UnB Idiomas te coloque na turma certa.
+
+        As provas de nivelamento, nesse semestre serão realizadas durante duas semanas;
+        
+        1ª Semana 25/02 a 01/03/2019
+        2ª Semana 11/03 a 15/03/2019
+
+        O teste custa R$ 42,00!
+        Fica ligado pra não perder as datas!
 
   utter_course_scholarship:
     - text: |
