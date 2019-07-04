@@ -414,8 +414,10 @@ templates:
 
   utter_cancellation_refund:
     - text: |
-        Para conseguir reembolso olha só
+        Para conseguir o cancelamento da matrícula, você precisa ficar ligado, pois você só pode receber seu reembolso até o primeiro dia útil, após as 4 primeiras horas-aula.
 
+        O requerimento deve ser presencial e se você tiver realizado alguma aula, o valor referente precisa ser pago em um posto do UnB Idiomas.
+        
   utter_goodbye:
     - text: |
         Até a próxima!
