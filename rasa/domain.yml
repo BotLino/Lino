@@ -392,7 +392,9 @@ templates:
 
   utter_course_absence:
     - text: |
-        O limite de faltas que você pode ter é 50
+        O limite de faltas que você pode ter é 25% do total de horas-aula do seu curso, caso você queira conferir uma tabela detalhada sobre isso, confere nesse linK!
+
+        http://www.unbidiomas.unb.br/wp-content/uploads/2019/02/Normas-UnB-Idiomas_fevereiro-2019V2.pdf
 
   utter_change_class:
     - text: |
