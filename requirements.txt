@@ -2,7 +2,7 @@ rasa-core==0.13.1
 rasa-core-sdk==0.12.1
 rasa-nlu==0.14.0
 Flask==1.0.2
-Flask-Cors==3.0.6
+Flask-Cors==3.0.9
 httpretty
 requests
 pymongo==3.7.1
